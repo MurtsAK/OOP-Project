@@ -25,7 +25,7 @@ bool Game::init()
         }
 
         //Create window
-        gWindow = SDL_CreateWindow("Fruit Ninja", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        gWindow = SDL_CreateWindow("Space Shooter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         if (gWindow == NULL)
         {
             printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
@@ -170,12 +170,12 @@ void Game::run()
                 // std::cout << xMouse << " " << yMouse << std::endl;
                 // CuttingBoard.createObject(xMouse, yMouse);
                 // MainMenu.createObject(xMouse, yMouse);
-                if (xMouse >= 308 && xMouse <= 450 && yMouse >= 475 && yMouse <= 538 && Screen == 0)
+                if (xMouse >= 528 && xMouse <= 678 && yMouse >= 475 && yMouse <= 538 && Screen == 0)
                 {
                     Screen = 1;
                     gTexture = loadTexture("ABOUT_Menu.png");
                 }
-                if (xMouse >= 528 && xMouse <= 678 && yMouse >= 475 && yMouse <= 538 && Screen == 0)
+                if (xMouse >= 308 && xMouse <= 450 && yMouse >= 475 && yMouse <= 538 && Screen == 0)
                 {
                     Screen = 2;
                     gTexture = loadTexture("GameBoard1.png");

@@ -12,7 +12,7 @@
 class Game
 {
     //Screen dimension constants
-    const int SCREEN_WIDTH = 1200;
+    const int SCREEN_WIDTH = 610;
     const int SCREEN_HEIGHT = 700;
 
     //The window we'll be rendering to
