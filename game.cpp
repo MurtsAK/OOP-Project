@@ -170,17 +170,17 @@ void Game::run()
                 // std::cout << xMouse << " " << yMouse << std::endl;
                 // CuttingBoard.createObject(xMouse, yMouse);
                 // MainMenu.createObject(xMouse, yMouse);
-                if (xMouse >= 528 && xMouse <= 678 && yMouse >= 475 && yMouse <= 538 && Screen == 0)
+                if (xMouse >= 47 && xMouse <= 580 && yMouse >= 473 && yMouse <= 530 && Screen == 0)
                 {
                     Screen = 1;
                     gTexture = loadTexture("ABOUT_Menu.png");
                 }
-                if (xMouse >= 308 && xMouse <= 450 && yMouse >= 475 && yMouse <= 538 && Screen == 0)
+                if (xMouse >= 207 && xMouse <= 405 && yMouse >= 384 && yMouse <= 436 && Screen == 0)
                 {
                     Screen = 2;
                     gTexture = loadTexture("GameBoard1.png");
                 }
-                if (xMouse >= 750 && xMouse <= 900 && yMouse >= 475 && yMouse <= 538 && Screen == 0)
+                if (xMouse >= 221 && xMouse <= 408 && yMouse >= 568 && yMouse <= 622 && Screen == 0)
                 {
                     Screen = 3;
                     gTexture = loadTexture("HowToPlay.png");
