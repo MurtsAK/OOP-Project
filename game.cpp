@@ -194,6 +194,10 @@ void Game::run()
                     }
                 }
             }
+            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3)){
+                gTexture = loadTexture("Mainmenu.png");
+                Screen = 0;
+            }
 
             // if (e.type == SDL_MOUSEBUTTONUP)
             // {
