@@ -4,6 +4,7 @@
 #include "CuttingBoard.hpp"
 #include "Score.hpp"
 #include "HealthPoints.hpp"
+#include "Spaceship.hpp"
 #include <time.h>
 bool Game::init()
 {
@@ -192,6 +193,43 @@ void Game::run()
                         gTexture = loadTexture("MainMenu.png");
                         Screen = 0;
                     }
+                }
+            }
+            if (Screen == 2){
+            if (e.type == SDL_KEYDOWN){
+                if (e.key.keysym.sym == SDLK_1){
+                    //Spaceship 1
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                    SDL_Rect spaceship_move = {xMouse,yMouse,75,90};
+                    SDL_Rect spaceship_src = {41,37,418,425};
+                    new Spaceship(gRenderer,assets,spaceship_move,spaceship_src);
+                }
+                if (e.key.keysym.sym == SDLK_2){
+                    //Spaceship 2
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (e.key.keysym.sym == SDLK_3){
+                    //Spaceship 3
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (e.key.keysym.sym == SDLK_4){
+                    //Spaceship 4
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (e.key.keysym.sym == SDLK_5){
+                    //Spaceship 5
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (e.key.keysym.sym == SDLK_6){
+                    //Spaceship 6
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
                 }
             }
             if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3)){

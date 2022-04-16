@@ -1,0 +1,34 @@
+if (xMouse >= 64 && xMouse <= 180 && yMouse >= 230 && yMouse <= 323){
+                    //Spaceship 1
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                    SDL_Rect spaceship_move = {xMouse,yMouse,75,90};
+                    SDL_Rect spaceship_src = {41,37,418,425};
+                    new Spaceship(gRenderer,assets,spaceship_move,spaceship_src);
+                }
+                if (xMouse >= 240 && xMouse <= 370 && yMouse >= 220 && yMouse <= 324){
+                    //Spaceship 2
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (xMouse >= 430 && xMouse <= 555 && yMouse >= 230 && yMouse <= 335){
+                    //Spaceship 3
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (xMouse >= 59 && xMouse <= 172 && yMouse >= 368 && yMouse <= 468){
+                    //Spaceship 4
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (xMouse >= 240 && xMouse <= 370 && yMouse >= 375 && yMouse <= 470){
+                    //Spaceship 5
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                if (xMouse >= 444 && xMouse <= 545 && yMouse >= 366 && yMouse <= 466){
+                    //Spaceship 6
+                    Screen = 4;
+                    gTexture = loadTexture("CuttingBoard.png");
+                }
+                }
