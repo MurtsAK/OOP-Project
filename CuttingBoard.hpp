@@ -14,6 +14,7 @@
 #include "Diamond.hpp"
 #include "Score.hpp"
 #include "HealthPoints.hpp"
+#include "Spaceship.hpp"
 #include <list>
 #include <SDL_ttf.h>
 using namespace std;
@@ -23,6 +24,7 @@ class CuttingBoard
 {
     list<Fruit *> Fruits;
     list<Enemy *> Enemies;
+    list<Spaceship*> Spaceships;
     list<Collectible *> Collectibles;
     SDL_Renderer *gRenderer;
     SDL_Texture *assets;
@@ -37,6 +39,8 @@ public:
     void createObject();
     void checkMouseClick(int, int, int &);
     void deleteObjects();
+    void createSpaceship();
+    void drawSpaceship();
     // void dropObjects();
     // void fire();
     ~CuttingBoard();

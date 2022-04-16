@@ -9,12 +9,12 @@ class Spaceship
     bool Collision = false;
 
     public:
-    Spaceship(SDL_Renderer *, SDL_Texture *, SDL_Rect mov, SDL_Rect srcR);
-    virtual SDL_Rect getMov();
-    virtual void draw(SDL_Renderer *, SDL_Texture *);
-    virtual void blastAnimation();
-    virtual void Fire();
-    virtual bool getCollision();
-    virtual void setCollision();
-
+    Spaceship(SDL_Renderer *, SDL_Texture *, SDL_Rect mov);
+    SDL_Rect getMov();
+    void draw(SDL_Renderer *, SDL_Texture *);
+    void blastAnimation();
+    void Fire();
+    bool getCollision();
+    void setCollision();
+    void setMov(int x, int y);
 };

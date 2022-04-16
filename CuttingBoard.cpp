@@ -40,6 +40,11 @@ void CuttingBoard::checkMouseClick(int x, int y, int &Screen)
 {
     SDL_Rect getmov;
     bool isclicked;
+
+    for (auto S : Spaceships){
+        S->setMov(x,y);
+    }
+
     for (auto F : Fruits)
     {
         isclicked = F->getIsClicked();
@@ -185,6 +190,13 @@ void CuttingBoard::drawObjects()
     }
 }
 
+void CuttingBoard::drawSpaceship(){
+    bool Collision;
+    for (auto S : Spaceships){
+        S->draw(gRenderer,assets);
+    }
+}
+
 void CuttingBoard::createObject()
 {
     int randomObject, randomEnemy, randomFruit, randomCollectible, randomX;
@@ -279,6 +291,11 @@ void CuttingBoard::createObject()
             // artificialDelay();
         }
     }
+}
+
+void CuttingBoard::createSpaceship(){
+    SDL_Rect spaceship_mover = {400,500,100,100};
+    Spaceships.push_back(new Spaceship(gRenderer, assets,spaceship_mover));
 }
 
 //Turretmov and Bodymov creates rectangular frames at specific x,y values for each individual object

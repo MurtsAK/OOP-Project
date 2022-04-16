@@ -201,9 +201,7 @@ void Game::run()
                     //Spaceship 1
                     Screen = 4;
                     gTexture = loadTexture("CuttingBoard.png");
-                    SDL_Rect spaceship_move = {xMouse,yMouse,75,90};
-                    SDL_Rect spaceship_src = {41,37,418,425};
-                    new Spaceship(gRenderer,assets,spaceship_move,spaceship_src);
+                    CuttingBoard.createSpaceship();
                 }
                 if (e.key.keysym.sym == SDLK_2){
                     //Spaceship 2
@@ -283,6 +281,7 @@ void Game::run()
         //***********************draw the objects here********************
         if (Screen >= 4)
         {
+            CuttingBoard.drawSpaceship();
             CuttingBoard.drawObjects();
             CuttingBoard.displayScore();
             CuttingBoard.displayHealth();
