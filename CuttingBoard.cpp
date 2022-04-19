@@ -293,9 +293,9 @@ void CuttingBoard::createObject()
     }
 }
 
-void CuttingBoard::createSpaceship(){
-    SDL_Rect spaceship_mover = {400,500,100,100};
-    Spaceships.push_back(new Spaceship(gRenderer, assets,spaceship_mover));
+void CuttingBoard::createSpaceship(int spaceship){
+    SDL_Rect spaceship_mover = {400,570,100,100};
+    Spaceships.push_back(new Spaceship(gRenderer, assets,spaceship_mover, spaceship));
 }
 
 //Turretmov and Bodymov creates rectangular frames at specific x,y values for each individual object

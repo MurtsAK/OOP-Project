@@ -39,7 +39,7 @@ public:
     void createObject();
     void checkMouseClick(int, int, int &);
     void deleteObjects();
-    void createSpaceship();
+    void createSpaceship(int spaceship);
     void drawSpaceship();
     // void dropObjects();
     // void fire();

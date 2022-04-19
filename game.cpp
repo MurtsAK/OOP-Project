@@ -201,32 +201,37 @@ void Game::run()
                     //Spaceship 1
                     Screen = 4;
                     gTexture = loadTexture("CuttingBoard.png");
-                    CuttingBoard.createSpaceship();
+                    CuttingBoard.createSpaceship(1);
                 }
                 if (e.key.keysym.sym == SDLK_2){
                     //Spaceship 2
                     Screen = 4;
                     gTexture = loadTexture("CuttingBoard.png");
+                    CuttingBoard.createSpaceship(2);
                 }
                 if (e.key.keysym.sym == SDLK_3){
                     //Spaceship 3
                     Screen = 4;
                     gTexture = loadTexture("CuttingBoard.png");
+                    CuttingBoard.createSpaceship(3);
                 }
                 if (e.key.keysym.sym == SDLK_4){
                     //Spaceship 4
                     Screen = 4;
                     gTexture = loadTexture("CuttingBoard.png");
+                    CuttingBoard.createSpaceship(4);
                 }
                 if (e.key.keysym.sym == SDLK_5){
                     //Spaceship 5
                     Screen = 4;
                     gTexture = loadTexture("CuttingBoard.png");
+                    CuttingBoard.createSpaceship(5);
                 }
                 if (e.key.keysym.sym == SDLK_6){
                     //Spaceship 6
                     Screen = 4;
                     gTexture = loadTexture("CuttingBoard.png");
+                    CuttingBoard.createSpaceship(6);
                 }
                 }
             }
