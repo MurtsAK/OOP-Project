@@ -6,26 +6,27 @@
 #include "HealthPoints.hpp"
 #include "Spaceship.hpp"
 #include <time.h>
+// hwlloooooo
 bool Game::init()
 {
-    //Initialization flag
+    // Initialization flag
     bool success = true;
 
-    //Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO ||SDL_INIT_AUDIO) < 0)
+    // Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO || SDL_INIT_AUDIO) < 0)
     {
         printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
         success = false;
     }
     else
     {
-        //Set texture filtering to linear
+        // Set texture filtering to linear
         if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
         {
             printf("Warning: Linear texture filtering not enabled!");
         }
 
-        //Create window
+        // Create window
         gWindow = SDL_CreateWindow("Space Shooter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         if (gWindow == NULL)
         {
@@ -34,7 +35,7 @@ bool Game::init()
         }
         else
         {
-            //Create renderer for window
+            // Create renderer for window
             gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
             if (gRenderer == NULL)
             {
@@ -43,20 +44,20 @@ bool Game::init()
             }
             else
             {
-                //Initialize renderer color
+                // Initialize renderer color
                 SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
-                //Initialize PNG loading
+                // Initialize PNG loading
                 int imgFlags = IMG_INIT_PNG;
                 if (!(IMG_Init(imgFlags) & imgFlags))
                 {
                     printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
                     success = false;
                 }
-                	  //Initialize SDL_mixer
-                if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+                // Initialize SDL_mixer
+                if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
                 {
-                    printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+                    printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
                     success = false;
                 }
             }
@@ -68,7 +69,7 @@ bool Game::init()
 
 bool Game::loadMedia()
 {
-    //Loading success flag
+    // Loading success flag
     bool success = true;
 
     assets = loadTexture("assets.png");
@@ -78,7 +79,7 @@ bool Game::loadMedia()
         printf("Unable to run due to error: %s\n", SDL_GetError());
         success = false;
     }
-    gMusic = Mix_LoadMUS( "bg_music.mp3" );
+    gMusic = Mix_LoadMUS("bg_music.mp3");
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
     {
         printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
@@ -90,17 +91,17 @@ bool Game::loadMedia()
 
 void Game::close()
 {
-    //Free loaded images
+    // Free loaded images
     SDL_DestroyTexture(assets);
     assets = NULL;
     SDL_DestroyTexture(gTexture);
 
-    //Destroy window
+    // Destroy window
     SDL_DestroyRenderer(gRenderer);
     SDL_DestroyWindow(gWindow);
     gWindow = NULL;
     gRenderer = NULL;
-    //Quit SDL subsystems
+    // Quit SDL subsystems
     IMG_Quit();
     SDL_Quit();
     Mix_FreeMusic(gMusic);
@@ -109,10 +110,10 @@ void Game::close()
 
 SDL_Texture *Game::loadTexture(std::string path)
 {
-    //The final texture
+    // The final texture
     SDL_Texture *newTexture = NULL;
 
-    //Load image at specified path
+    // Load image at specified path
     SDL_Surface *loadedSurface = IMG_Load(path.c_str());
     if (loadedSurface == NULL)
     {
@@ -120,14 +121,14 @@ SDL_Texture *Game::loadTexture(std::string path)
     }
     else
     {
-        //Create texture from surface pixels
+        // Create texture from surface pixels
         newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
         if (newTexture == NULL)
         {
             printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
         }
 
-        //Get rid of old loaded surface
+        // Get rid of old loaded surface
         SDL_FreeSurface(loadedSurface);
     }
 
@@ -139,7 +140,8 @@ void Game::run()
     bool quit = false;
     SDL_Event e;
     static int Screen = 0;
-    if (Screen !=4){
+    if (Screen != 4)
+    {
         Mix_PlayMusic(gMusic, -2);
     }
     Score totalScore(0);
@@ -150,22 +152,22 @@ void Game::run()
     // MainMenu MainMenu(gRenderer, assets);
     while (!quit)
     {
-        //Handle events on queue
+        // Handle events on queue
         while (SDL_PollEvent(&e) != 0)
         {
 
             int xMouse, yMouse;
             // bool mousePressed = false;
 
-            //User requests quit
+            // User requests quit
             if (e.type == SDL_QUIT)
             {
                 quit = true;
             }
             if (e.type == SDL_MOUSEBUTTONDOWN)
             {
-                //this is a good location to add pigeon in linked list.
-                // mousePressed = true;
+                // this is a good location to add pigeon in linked list.
+                //  mousePressed = true;
 
                 SDL_GetMouseState(&xMouse, &yMouse);
                 // std::cout << xMouse << " " << yMouse << std::endl;
@@ -195,47 +197,56 @@ void Game::run()
                     }
                 }
             }
-            if (Screen == 2){
-            if (e.type == SDL_KEYDOWN){
-                if (e.key.keysym.sym == SDLK_1){
-                    //Spaceship 1
-                    Screen = 4;
-                    gTexture = loadTexture("CuttingBoard.png");
-                    CuttingBoard.createSpaceship(1);
-                }
-                if (e.key.keysym.sym == SDLK_2){
-                    //Spaceship 2
-                    Screen = 4;
-                    gTexture = loadTexture("CuttingBoard.png");
-                    CuttingBoard.createSpaceship(2);
-                }
-                if (e.key.keysym.sym == SDLK_3){
-                    //Spaceship 3
-                    Screen = 4;
-                    gTexture = loadTexture("CuttingBoard.png");
-                    CuttingBoard.createSpaceship(3);
-                }
-                if (e.key.keysym.sym == SDLK_4){
-                    //Spaceship 4
-                    Screen = 4;
-                    gTexture = loadTexture("CuttingBoard.png");
-                    CuttingBoard.createSpaceship(4);
-                }
-                if (e.key.keysym.sym == SDLK_5){
-                    //Spaceship 5
-                    Screen = 4;
-                    gTexture = loadTexture("CuttingBoard.png");
-                    CuttingBoard.createSpaceship(5);
-                }
-                if (e.key.keysym.sym == SDLK_6){
-                    //Spaceship 6
-                    Screen = 4;
-                    gTexture = loadTexture("CuttingBoard.png");
-                    CuttingBoard.createSpaceship(6);
-                }
+            if (Screen == 2)
+            {
+                if (e.type == SDL_KEYDOWN)
+                {
+                    if (e.key.keysym.sym == SDLK_1)
+                    {
+                        // Spaceship 1
+                        Screen = 4;
+                        gTexture = loadTexture("CuttingBoard.png");
+                        CuttingBoard.createSpaceship(1);
+                    }
+                    if (e.key.keysym.sym == SDLK_2)
+                    {
+                        // Spaceship 2
+                        Screen = 4;
+                        gTexture = loadTexture("CuttingBoard.png");
+                        CuttingBoard.createSpaceship(2);
+                    }
+                    if (e.key.keysym.sym == SDLK_3)
+                    {
+                        // Spaceship 3
+                        Screen = 4;
+                        gTexture = loadTexture("CuttingBoard.png");
+                        CuttingBoard.createSpaceship(3);
+                    }
+                    if (e.key.keysym.sym == SDLK_4)
+                    {
+                        // Spaceship 4
+                        Screen = 4;
+                        gTexture = loadTexture("CuttingBoard.png");
+                        CuttingBoard.createSpaceship(4);
+                    }
+                    if (e.key.keysym.sym == SDLK_5)
+                    {
+                        // Spaceship 5
+                        Screen = 4;
+                        gTexture = loadTexture("CuttingBoard.png");
+                        CuttingBoard.createSpaceship(5);
+                    }
+                    if (e.key.keysym.sym == SDLK_6)
+                    {
+                        // Spaceship 6
+                        Screen = 4;
+                        gTexture = loadTexture("CuttingBoard.png");
+                        CuttingBoard.createSpaceship(6);
+                    }
                 }
             }
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3)){
+            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3))
+            {
                 gTexture = loadTexture("Mainmenu.png");
                 Screen = 0;
             }
@@ -281,8 +292,8 @@ void Game::run()
             gTexture = loadTexture("GameOver.png");
         }
 
-        SDL_RenderClear(gRenderer);                      //removes everything from renderer
-        SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
+        SDL_RenderClear(gRenderer);                      // removes everything from renderer
+        SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); // Draws background to renderer
         //***********************draw the objects here********************
         if (Screen >= 4)
         {
@@ -295,9 +306,9 @@ void Game::run()
         // MainMenu.drawObjects();
 
         //****************************************************************
-        SDL_RenderPresent(gRenderer); //displays the updated renderer
+        SDL_RenderPresent(gRenderer); // displays the updated renderer
 
-        SDL_Delay(200); //causes sdl engine to delay for specified miliseconds
+        SDL_Delay(200); // causes sdl engine to delay for specified miliseconds
         frameCounter += 1;
         if (frameCounter == 15)
         {
