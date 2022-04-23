@@ -3,7 +3,7 @@
 Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spaceship) : gRenderer(rend), assets(ast)
 {
     mover = mov;
-    src = {10, 144, 86, 80};
+    // src = {10, 144, 86, 80};
     if (spaceship == 1)
     {
         // src = {41,644,418,425};
@@ -27,12 +27,12 @@ Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spa
     else if (spaceship == 5)
     {
         // src = {532,639,448,465};
-        src = {37, 3075, 202, 266};
+        src = {37, 3705, 202, 266};
     }
     else if (spaceship == 6)
     {
         // src = {188,1315,532,790};
-        src = {89, 3497, 98, 86};
+        src = {73, 1181, 130, 102};
     }
 }
 
