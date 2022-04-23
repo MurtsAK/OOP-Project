@@ -41,10 +41,10 @@ void CuttingBoard::checkMouseClick(int x, int y, int &Screen)
     SDL_Rect getmov;
     bool isclicked;
 
-    for (auto S : Spaceships){
-        S->setMov(x,y);
+    for (auto S : Spaceships)
+    {
+        S->setMov(x, y);
     }
-
     for (auto F : Fruits)
     {
         isclicked = F->getIsClicked();
@@ -71,7 +71,7 @@ void CuttingBoard::checkMouseClick(int x, int y, int &Screen)
                 totalHealth.updateHealth(E->LifeDeduct());
                 if (totalHealth.getHealth() <= 0)
                 {
-                    Screen = 5;
+                    Screen = 7;
                 }
             }
         }
@@ -98,8 +98,8 @@ void CuttingBoard::displayScore()
     // Current Score can be retrieved using totalScore.getScore()
     // Uncomment line 228
     TTF_Init();
-    //Initialize SDL_ttf
-    //this opens a font style and sets a size
+    // Initialize SDL_ttf
+    // this opens a font style and sets a size
     TTF_Font *font = TTF_OpenFont("arial.ttf", 28);
 
     // this is the color in rgb format,
@@ -117,11 +117,11 @@ void CuttingBoard::displayScore()
     // now you can convert it into a texture
     SDL_Texture *Message = SDL_CreateTextureFromSurface(gRenderer, surfaceMessage);
 
-    SDL_Rect Message_rect; //create a rect
-    Message_rect.x = 1100;   //controls the rect's x coordinate
+    SDL_Rect Message_rect; // create a rect
+    Message_rect.x = 1100; // controls the rect's x coordinate
     Message_rect.y = 60;   // controls the rect's y coordinte
-    Message_rect.w = 50;  // controls the width of the rect
-    Message_rect.h = 50;  // controls the height of the rect
+    Message_rect.w = 50;   // controls the width of the rect
+    Message_rect.h = 50;   // controls the height of the rect
 
     // (0,0) is on the top left of the window/screen,
     // think a rect as the text's box,
@@ -189,11 +189,12 @@ void CuttingBoard::drawObjects()
         C->dropCollectibles();
     }
 }
-
-void CuttingBoard::drawSpaceship(){
+void CuttingBoard::drawSpaceship()
+{
     bool Collision;
-    for (auto S : Spaceships){
-        S->draw(gRenderer,assets);
+    for (auto S : Spaceships)
+    {
+        S->draw(gRenderer, assets);
     }
 }
 
@@ -293,17 +294,16 @@ void CuttingBoard::createObject()
     }
 }
 
-void CuttingBoard::createSpaceship(int spaceship){
-    SDL_Rect spaceship_mover = {400,570,100,100};
-    Spaceships.push_back(new Spaceship(gRenderer, assets,spaceship_mover, spaceship));
-}
-
-//Turretmov and Bodymov creates rectangular frames at specific x,y values for each individual object
-// Turretmov have an increment of 40 in x coordinate in order to place the turret on the right edge of tank body
+// Turretmov and Bodymov creates rectangular frames at specific x,y values for each individual object
+//  Turretmov have an increment of 40 in x coordinate in order to place the turret on the right edge of tank body
 
 // Enemies.push_back(new Fish(gRenderer, assets, EnemyMov));
 // Using the two objects TankBody and TankTurret, a new Tank is created dynamically everytime a mouse is clicked
-
+void CuttingBoard::createSpaceship(int spaceship)
+{
+    SDL_Rect spaceship_mover = {400, 570, 100, 100};
+    Spaceships.push_back(new Spaceship(gRenderer, assets, spaceship_mover, spaceship));
+}
 CuttingBoard::CuttingBoard(SDL_Renderer *renderer, SDL_Texture *asst, Score &totalScore, HealthPoints &totalHealth) : gRenderer(renderer), assets(asst), totalScore(totalScore), totalHealth(totalHealth)
 {
 }

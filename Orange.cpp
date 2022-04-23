@@ -1,10 +1,11 @@
 #include "Orange.hpp"
-
+// blue astroid
 Orange::Orange(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Fruit(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
-    src = {826, 44, 146, 162};
+    // src = {826, 44, 146, 162};
+    src = {686, 1120, 124, 102};
 }
 
 void Orange::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
@@ -15,7 +16,9 @@ void Orange::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 
 void Orange::cutAnimation()
 {
-    src = {998, 44, 139, 146};
+    // src = {998, 44, 139, 146};
+    // src={116,144,50,50};
+    src = {686, 1120, 124, 102};
 }
 
 void Orange::dropFruits()

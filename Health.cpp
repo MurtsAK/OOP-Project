@@ -4,7 +4,8 @@ Health::Health(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Collectible
 {
     // Tank Body's location in asset.png
     mover = mov;
-    src = {1039, 813, 183, 183};
+    // src = {1039, 813, 183, 183};
+    src = {1049, 823, 183, 183};
 }
 
 void Health::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)

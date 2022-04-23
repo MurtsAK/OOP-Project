@@ -4,7 +4,9 @@ Diamond::Diamond(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Collectib
 {
     // Tank Body's location in asset.png
     mover = mov;
-    src = {1262, 840, 164, 156};
+    // src = {1262, 840, 164, 156};
+    // src={310,249,29,27};
+    src = {1272, 850, 164, 156};
 }
 
 void Diamond::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)

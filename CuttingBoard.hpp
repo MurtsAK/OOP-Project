@@ -10,11 +10,11 @@
 #include "Watermelon.hpp"
 #include "Lemon.hpp"
 #include "Collectible.hpp"
+#include "Spaceship.hpp"
 #include "Health.hpp"
 #include "Diamond.hpp"
 #include "Score.hpp"
 #include "HealthPoints.hpp"
-#include "Spaceship.hpp"
 #include <list>
 #include <SDL_ttf.h>
 using namespace std;
@@ -24,8 +24,8 @@ class CuttingBoard
 {
     list<Fruit *> Fruits;
     list<Enemy *> Enemies;
-    list<Spaceship*> Spaceships;
     list<Collectible *> Collectibles;
+    list<Spaceship *> Spaceships;
     SDL_Renderer *gRenderer;
     SDL_Texture *assets;
     Score totalScore;
@@ -37,10 +37,10 @@ public:
     void displayHealth();
     void displayScore();
     void createObject();
-    void checkMouseClick(int, int, int &);
-    void deleteObjects();
     void createSpaceship(int spaceship);
     void drawSpaceship();
+    void checkMouseClick(int, int, int &);
+    void deleteObjects();
     // void dropObjects();
     // void fire();
     ~CuttingBoard();

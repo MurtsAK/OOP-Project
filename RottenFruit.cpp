@@ -4,7 +4,8 @@ RottenFruit::RottenFruit(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : E
 {
     // Tank Body's location in asset.png
     mover = mov;
-    src = {392, 835, 87, 154};
+    // src = {392, 835, 87, 154};
+    src = {830, 1283, 34, 34};
 }
 
 void RottenFruit::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
@@ -36,12 +37,14 @@ void RottenFruit::animateEnemy()
     static int currentState = 0;
     if (currentState == 0)
     {
-        src = {183, 42, 85, 156};
+        // src = {183, 42, 85, 156};
+        src = {830, 1283, 34, 34};
         currentState = 1;
     }
     else if (currentState == 1)
     {
-        src = {392, 835, 87, 154};
+        // src = {392, 835, 87, 154};
+        src = {830, 1283, 34, 34};
         currentState = 0;
     }
 }

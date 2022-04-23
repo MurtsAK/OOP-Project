@@ -8,7 +8,7 @@ class Fish : public Enemy
 public:
     Fish(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov);
 
-    void draw(SDL_Renderer *, SDL_Texture *assets);
+    void draw(SDL_Renderer *, SDL_Texture *enemies);
     int LifeDeduct();
     void dropEnemies();
     void animateEnemy();

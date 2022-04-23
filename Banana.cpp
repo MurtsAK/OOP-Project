@@ -1,10 +1,10 @@
 #include "Banana.hpp"
-
+// red astroid
 Banana::Banana(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Fruit(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
-    src = {992, 555, 168, 158};
+    src = {552, 1120, 114, 114};
 }
 
 void Banana::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
@@ -15,7 +15,8 @@ void Banana::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 
 void Banana::cutAnimation()
 {
-    src = {1185, 613, 135, 99};
+    // src = {1185, 613, 135, 99};
+    src = {552, 1120, 114, 114};
 }
 
 void Banana::dropFruits()

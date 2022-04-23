@@ -1,10 +1,12 @@
 #include "Fish.hpp"
-
+// blue astroid
 Fish::Fish(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Enemy(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
-    src = {585, 800, 82, 200};
+    // src = {585, 800, 82, 200};
+    // src = {288, 55, 39, 39};
+    src = {552, 1254, 86, 80};
 }
 
 void Fish::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
@@ -36,12 +38,14 @@ void Fish::animateEnemy()
     static int currentState = 0;
     if (currentState == 0)
     {
-        src = {516, 19, 90, 200};
+        // src = {516, 19, 90, 200};
+        src = {552, 1254, 86, 80};
         currentState = 1;
     }
     else if (currentState == 1)
     {
-        src = {585, 800, 82, 200};
+        // src = {585, 800, 82, 200};
+        src = {552, 1254, 86, 80};
         currentState = 0;
     }
 }

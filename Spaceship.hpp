@@ -8,7 +8,7 @@ class Spaceship
     SDL_Rect mover, src;
     bool Collision = false;
 
-    public:
+public:
     Spaceship(SDL_Renderer *, SDL_Texture *, SDL_Rect mov, int spaceship);
     SDL_Rect getMov();
     void draw(SDL_Renderer *, SDL_Texture *);
