@@ -25,7 +25,7 @@ class CuttingBoard
     list<Fruit *> Fruits;
     list<Enemy *> Enemies;
     list<Collectible *> Collectibles;
-    list<Spaceship *> Spaceships;
+    Spaceship* spaceship_in_game;
     SDL_Renderer *gRenderer;
     SDL_Texture *assets;
     Score totalScore;
@@ -39,6 +39,7 @@ public:
     void createObject();
     void createSpaceship(int spaceship);
     void drawSpaceship();
+    Spaceship* getSpaceship();
     void checkMouseClick(int, int, int &);
     void deleteObjects();
     // void dropObjects();

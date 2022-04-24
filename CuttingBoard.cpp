@@ -41,10 +41,7 @@ void CuttingBoard::checkMouseClick(int x, int y, int &Screen)
     SDL_Rect getmov;
     bool isclicked;
 
-    for (auto S : Spaceships)
-    {
-        S->setMov(x, y);
-    }
+    spaceship_in_game->setMov(x,y);
     for (auto F : Fruits)
     {
         isclicked = F->getIsClicked();
@@ -192,10 +189,12 @@ void CuttingBoard::drawObjects()
 void CuttingBoard::drawSpaceship()
 {
     bool Collision;
-    for (auto S : Spaceships)
-    {
-        S->draw(gRenderer, assets);
-    }
+    spaceship_in_game->draw(gRenderer,assets);
+}
+
+Spaceship* CuttingBoard::getSpaceship()
+{
+    return spaceship_in_game;
 }
 
 void CuttingBoard::createObject()
@@ -302,7 +301,7 @@ void CuttingBoard::createObject()
 void CuttingBoard::createSpaceship(int spaceship)
 {
     SDL_Rect spaceship_mover = {400, 570, 100, 100};
-    Spaceships.push_back(new Spaceship(gRenderer, assets, spaceship_mover, spaceship));
+    spaceship_in_game = new Spaceship(gRenderer, assets, spaceship_mover, spaceship);
 }
 CuttingBoard::CuttingBoard(SDL_Renderer *renderer, SDL_Texture *asst, Score &totalScore, HealthPoints &totalHealth) : gRenderer(renderer), assets(asst), totalScore(totalScore), totalHealth(totalHealth)
 {
@@ -339,6 +338,8 @@ CuttingBoard::~CuttingBoard()
     {
         delete C;
     }
+    delete spaceship_in_game;
+    spaceship_in_game = NULL;
     Collectibles.clear();
     Fruits.clear();
     Enemies.clear();

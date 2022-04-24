@@ -3,6 +3,7 @@
 Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spaceship) : gRenderer(rend), assets(ast)
 {
     mover = mov;
+    spaceship_type = spaceship;
     // src = {10, 144, 86, 80};
     if (spaceship == 1)
     {
@@ -38,15 +39,34 @@ Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spa
 
 void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
+    if (!bullets.empty()){
+        restTime+=1;
+    }
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
+    for (auto B :  bullets){
+        B->draw(gRenderer,assets);
+        B->move();
+    }
 }
 
 void Spaceship::setMov(int x, int y)
 {
-    mover.x = x;
+    mover.x = x-25;
 }
 
 void Spaceship::blastAnimation() {}
+
+void Spaceship::createBullets()
+{
+    if (bullets.empty()){
+        bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
+    }else{
+    if (restTime>10){
+        bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
+        restTime=0;
+    }
+    }
+}
 
 void Spaceship::Fire() {}
 
@@ -58,3 +78,11 @@ SDL_Rect Spaceship::getMov()
 bool Spaceship::getCollision() {}
 
 void Spaceship::setCollision() {}
+
+Spaceship::~Spaceship()
+{
+    for (auto B : bullets){
+        delete B;
+    }
+    bullets.clear();
+}
