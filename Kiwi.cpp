@@ -1,6 +1,6 @@
 #include "Kiwi.hpp"
 // yellow enemy
-Kiwi::Kiwi(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Fruit(rend, ast)
+Kiwi::Kiwi(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
@@ -22,7 +22,7 @@ void Kiwi::cutAnimation()
     src = {830, 1165, 39, 39};
 }
 
-void Kiwi::dropFruits()
+void Kiwi::dropObstacles()
 {
     srand(time(0));
     int randomY;

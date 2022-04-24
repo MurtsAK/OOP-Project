@@ -1,6 +1,6 @@
 #include "Lemon.hpp"
 // rock
-Lemon::Lemon(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Fruit(rend, ast)
+Lemon::Lemon(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
@@ -21,7 +21,7 @@ void Lemon::cutAnimation()
     src = {658, 1254, 50, 50};
 }
 
-void Lemon::dropFruits()
+void Lemon::dropObstacles()
 {
     srand(time(0));
     int randomY;

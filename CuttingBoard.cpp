@@ -16,13 +16,13 @@ void CuttingBoard::deleteObjects()
             Enemies.remove(E);
         }
     }
-    for (auto F : Fruits)
+    for (auto F : Obstacles)
     {
         ObjectMov = F->getMov();
         if (ObjectMov.y > 700)
         {
             delete F;
-            Fruits.remove(F);
+            Obstacles.remove(F);
         }
     }
     for (auto C : Collectibles)
@@ -42,7 +42,7 @@ void CuttingBoard::checkMouseClick(int x, int y, int &Screen)
     bool isclicked;
 
     spaceship_in_game->setMov(x,y);
-    for (auto F : Fruits)
+    for (auto F : Obstacles)
     {
         isclicked = F->getIsClicked();
         getmov = F->getMov();
@@ -175,10 +175,10 @@ void CuttingBoard::drawObjects()
         }
     }
 
-    for (auto F : Fruits)
+    for (auto F : Obstacles)
     {
         F->draw(gRenderer, assets);
-        F->dropFruits();
+        F->dropObstacles();
     }
     for (auto C : Collectibles)
     {
@@ -199,7 +199,7 @@ Spaceship* CuttingBoard::getSpaceship()
 
 void CuttingBoard::createObject()
 {
-    int randomObject, randomEnemy, randomFruit, randomCollectible, randomX;
+    int randomObject, randomEnemy, randomObstacle, randomCollectible, randomX;
     srand(time(0));
     randomX = 1 + rand() % 10;
     randomX = 100 * randomX;
@@ -231,30 +231,30 @@ void CuttingBoard::createObject()
     randomObject = 1 + rand() % 100;
     if (randomObject < 61)
     {
-        randomFruit = rand() % 5;
-        if (randomFruit == 0)
+        randomObstacle = rand() % 5;
+        if (randomObstacle == 0)
         {
-            Fruits.push_back(new Banana(gRenderer, assets, objectMov));
+            Obstacles.push_back(new Banana(gRenderer, assets, objectMov));
             // artificialDelay();
         }
-        else if (randomFruit == 1)
+        else if (randomObstacle == 1)
         {
-            Fruits.push_back(new Kiwi(gRenderer, assets, objectMov));
+            Obstacles.push_back(new Kiwi(gRenderer, assets, objectMov));
             // artificialDelay();
         }
-        else if (randomFruit == 2)
+        else if (randomObstacle == 2)
         {
-            Fruits.push_back(new Lemon(gRenderer, assets, objectMov));
+            Obstacles.push_back(new Lemon(gRenderer, assets, objectMov));
             // artificialDelay();
         }
-        else if (randomFruit == 3)
+        else if (randomObstacle == 3)
         {
-            Fruits.push_back(new Orange(gRenderer, assets, objectMov));
+            Obstacles.push_back(new Orange(gRenderer, assets, objectMov));
             // artificialDelay();
         }
         else
         {
-            Fruits.push_back(new Watermelon(gRenderer, assets, objectMov));
+            Obstacles.push_back(new Watermelon(gRenderer, assets, objectMov));
             // artificialDelay();
         }
     }
@@ -268,7 +268,7 @@ void CuttingBoard::createObject()
         }
         else if (randomEnemy == 1)
         {
-            Enemies.push_back(new RottenFruit(gRenderer, assets, objectMov));
+            Enemies.push_back(new RottenObstacle(gRenderer, assets, objectMov));
             // artificialDelay();
         }
         else
@@ -319,18 +319,18 @@ CuttingBoard::~CuttingBoard()
     // {
     //     delete F;
     // }
-    // for (auto Rf : RottenFruits)
+    // for (auto Rf : RottenObstacles)
     // {
     //     delete Rf;
     // }
     // Fishes.clear();
     // Bombs.clear();
-    // RottenFruits.clear();
+    // RottenObstacles.clear();
     for (auto E : Enemies)
     {
         delete E;
     }
-    for (auto F : Fruits)
+    for (auto F : Obstacles)
     {
         delete F;
     }
@@ -341,7 +341,7 @@ CuttingBoard::~CuttingBoard()
     delete spaceship_in_game;
     spaceship_in_game = NULL;
     Collectibles.clear();
-    Fruits.clear();
+    Obstacles.clear();
     Enemies.clear();
     std::cout << "Objects deleted";
 }

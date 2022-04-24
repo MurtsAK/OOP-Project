@@ -1,6 +1,6 @@
 #include "Watermelon.hpp"
 // jelly type
-Watermelon::Watermelon(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Fruit(rend, ast)
+Watermelon::Watermelon(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
@@ -19,7 +19,7 @@ void Watermelon::cutAnimation()
     src = {728, 1254, 49, 49};
 }
 
-void Watermelon::dropFruits()
+void Watermelon::dropObstacles()
 {
     srand(time(0));
     int randomY;

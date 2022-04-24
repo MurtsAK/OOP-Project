@@ -1,6 +1,6 @@
 #include "Orange.hpp"
 // blue astroid
-Orange::Orange(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Fruit(rend, ast)
+Orange::Orange(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
@@ -21,7 +21,7 @@ void Orange::cutAnimation()
     src = {686, 1120, 124, 102};
 }
 
-void Orange::dropFruits()
+void Orange::dropObstacles()
 {
     srand(time(0));
     int randomY;

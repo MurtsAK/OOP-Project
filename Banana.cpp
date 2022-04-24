@@ -1,6 +1,6 @@
 #include "Banana.hpp"
 // red astroid
-Banana::Banana(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Fruit(rend, ast)
+Banana::Banana(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
@@ -19,7 +19,7 @@ void Banana::cutAnimation()
     src = {552, 1120, 114, 114};
 }
 
-void Banana::dropFruits()
+void Banana::dropObstacles()
 {
     srand(time(0));
     int randomY;

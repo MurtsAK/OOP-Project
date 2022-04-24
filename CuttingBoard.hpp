@@ -1,8 +1,8 @@
 #include <SDL.h>
 #include "Enemy.hpp"
-#include "Fruit.hpp"
+#include "Obstacle.hpp"
 #include "Bomb.hpp"
-#include "RottenFruit.hpp"
+#include "RottenObstacle.hpp"
 #include "Fish.hpp"
 #include "Banana.hpp"
 #include "Kiwi.hpp"
@@ -22,7 +22,7 @@ using namespace std;
 
 class CuttingBoard
 {
-    list<Fruit *> Fruits;
+    list<Obstacle *> Obstacles;
     list<Enemy *> Enemies;
     list<Collectible *> Collectibles;
     Spaceship* spaceship_in_game;
