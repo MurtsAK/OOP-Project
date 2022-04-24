@@ -18,22 +18,22 @@ Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spa
     else if (spaceship == 3)
     {
         // src = {907,1277,920,977};
-        src = {41, 2161, 194, 170};
+        src = {37, 3705, 202, 266};
     }
     else if (spaceship == 4)
     {
         // src = {1067,617,555,644};
-        src = {37, 4089, 202, 258};
+        src = {73, 1181, 130, 102};
     }
     else if (spaceship == 5)
     {
         // src = {532,639,448,465};
-        src = {37, 3705, 202, 266};
+        src = {41, 2161, 194, 170};
     }
     else if (spaceship == 6)
     {
         // src = {188,1315,532,790};
-        src = {73, 1181, 130, 102};
+        src = {37, 4089, 202, 258};
     }
 }
 
@@ -61,7 +61,7 @@ void Spaceship::createBullets()
     if (bullets.empty()){
         bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
     }else{
-    if (restTime>10){
+    if (restTime>5){
         bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
         restTime=0;
     }

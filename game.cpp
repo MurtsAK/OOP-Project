@@ -178,7 +178,7 @@ void Game::run()
                     Screen = 1;
                     gTexture = loadTexture("ABOUT_Menu.png");
                 }
-                if (xMouse >= 461 && xMouse <= 695 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
+                else if (xMouse >= 461 && xMouse <= 695 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
                 {
                     Screen = 2;
                     gTexture = loadTexture("Levels.png");
@@ -188,7 +188,7 @@ void Game::run()
                     //     gTexture = loadTexture("Spaceships.png");
                     // }
                 }
-                if (xMouse >= 768 && xMouse <= 1006 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
+                else if (xMouse >= 768 && xMouse <= 1006 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
                 {
                     Screen = 3;
                     gTexture = loadTexture("HowToPlay.png");
@@ -198,14 +198,79 @@ void Game::run()
                 //     Screen =5;
                 //     gTexture =loadTexture("GameBoard1.png");
                 // }
-                if (Screen != 0 && Screen != 4)
+                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && (Screen == 1 || Screen==2 || Screen == 3))
                 {
-                    if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64)
-                    {
                         gTexture = loadTexture("MainMenu.png");
                         Screen = 0;
-                    }
                 }
+                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && Screen==4)
+                {
+                        gTexture = loadTexture("Levels.png");
+                        Screen = 2;
+                }
+                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && Screen==6)
+                {
+                        gTexture = loadTexture("Spaceships.png");
+                        Screen = 4;
+                }
+                else if (xMouse>=406 && xMouse<= 750 && yMouse >= 35 && yMouse<= 210 && Screen ==2)
+                {
+                    gTexture = loadTexture("Spaceships.png");
+                    Screen = 4;
+                }
+                else if(xMouse>=406 && xMouse<= 750 && yMouse >= 250 && yMouse<= 425 && Screen ==2)
+                {
+                    gTexture = loadTexture("Spaceships.png");
+                    Screen = 4;
+                }
+                else if(xMouse>=406 && xMouse<= 750 && yMouse >= 470 && yMouse<= 645 && Screen ==2)
+                {
+                    gTexture = loadTexture("Spaceships.png");
+                    Screen = 4;
+                }
+                else if(xMouse>=165 && xMouse<=400 && yMouse>=140 && yMouse<=300 && Screen == 4)
+                {
+                    //Spaceship 1
+                    gTexture = loadTexture("CuttingBoard.png");
+                    Screen = 6;
+                    CuttingBoard.createSpaceship(1);
+                }
+                else if(xMouse>=210 && xMouse<=400 && yMouse>=370 && yMouse<=545 && Screen == 4)
+                {
+                    //Spaceship 2
+                    gTexture = loadTexture("CuttingBoard.png");
+                    Screen = 6;
+                    CuttingBoard.createSpaceship(2);
+                }
+                else if(xMouse>=490 && xMouse<=660 && yMouse>=180 && yMouse<=395 && Screen == 4)
+                {
+                    //Spaceship 3
+                    gTexture = loadTexture("CuttingBoard.png");
+                    Screen = 6;
+                    CuttingBoard.createSpaceship(3);
+                }
+                else if(xMouse>=480 && xMouse<=690 && yMouse>=440 && yMouse<=565 && Screen == 4)
+                {
+                    //Spaceship 4
+                    gTexture = loadTexture("CuttingBoard.png");
+                    Screen = 6;
+                    CuttingBoard.createSpaceship(4);
+                }
+                else if(xMouse>=750 && xMouse<=980 && yMouse>=130 && yMouse<=290 && Screen == 4)
+                {
+                    //Spaceship 5
+                    gTexture = loadTexture("CuttingBoard.png");
+                    Screen = 6;
+                    CuttingBoard.createSpaceship(5);
+                }
+                else if(xMouse>=760 && xMouse<=940 && yMouse>=330 && yMouse<=560 && Screen == 4)
+                {
+                    //Spaceship 6
+                    gTexture = loadTexture("CuttingBoard.png");
+                    Screen = 6;
+                    CuttingBoard.createSpaceship(6);
+                }
+
             }
             // if (Screen == 2 and xMouse >= 404 && xMouse <= 752 && yMouse >= 36 && yMouse <= 645)
             // {
