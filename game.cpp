@@ -284,99 +284,106 @@ void Game::run()
             // {
             //     mousePressed = false;
             // }
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3))
-            {
-                gTexture = loadTexture("Mainmenu.png");
-                Screen = 0;
+            if (e.type == SDL_KEYDOWN){
+                if (e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3))
+                {
+                    gTexture = loadTexture("Mainmenu.png");
+                    Screen = 0;
+                }
+                else if (e.key.keysym.sym == SDLK_ESCAPE && Screen == 4)
+                {
+                    gTexture = loadTexture("Levels.png");
+                    Screen = 2;
+                }
+                if (e.key.keysym.sym == SDLK_SPACE && Screen == 6)
+                {
+                    CuttingBoard.getSpaceship()->createBullets();
+                }
+                if (e.key.keysym.sym == SDLK_LEFT && Screen == 6)
+                {
+                    CuttingBoard.getSpaceship()->moveLeft();
+                }
+                else if(e.key.keysym.sym == SDLK_RIGHT && Screen == 6)
+                {
+                    CuttingBoard.getSpaceship()->moveRight();
+                }
             }
 
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && Screen == 4)
-            {
-                gTexture = loadTexture("Levels.png");
-                Screen = 2;
-            }
-
-            if (e.type == SDL_MOUSEMOTION && Screen == 6)
-            {
-                SDL_GetMouseState(&xMouse, &yMouse);
-                CuttingBoard.checkMouseClick(xMouse, yMouse, Screen);
-                // if (mousePressed == true)
-                // {
-                //     SDL_GetMouseState(&xMouse, &yMouse);
-                //     CuttingBoard.checkMouseClick(xMouse, yMouse);
-                // }
-            }
+            // if (e.type == SDL_MOUSEMOTION && Screen == 6)
+            // {
+            //     SDL_GetMouseState(&xMouse, &yMouse);
+            //     CuttingBoard.checkMouseClick(xMouse, yMouse, Screen);
+            //     // if (mousePressed == true)
+            //     // {
+            //     //     SDL_GetMouseState(&xMouse, &yMouse);
+            //     //     CuttingBoard.checkMouseClick(xMouse, yMouse);
+            //     // }
+            // }
             // if (Screen == 2 and xMouse >= 404 && xMouse <= 752 && yMouse >= 36 && yMouse <= 645)
             // {
             //     Screen = 4;
             //     // gTexture = loadTexture("CuttingBoard.png");
             //     gTexture = loadTexture("CuttingBoard.png");
             // }
-
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN && Screen == 2)
-            {
-                Screen = 4;
-                gTexture = loadTexture("Spaceships.png");
-            }
             // else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN && Screen == 4)
             // {
             //     Screen = 5;
             //     gTexture = loadTexture("CuttingBoard1.png");
             // }
-            if (Screen == 4)
-            {
+            // if (Screen == 4)
+            // {
 
-                if (e.type == SDL_KEYDOWN)
-                {
+            //     if (e.type == SDL_KEYDOWN)
+            //     {
 
-                    if (e.key.keysym.sym == SDLK_1)
-                    // if (xMouse >= 169 && xMouse <= 393 && yMouse >= 144 && yMouse <= 295)
-                    {
-                        // Spaceship 1
-                        Screen = 6;
-                        gTexture = loadTexture("CuttingBoard.png");
-                        CuttingBoard.createSpaceship(1);
-                    }
-                    if (e.key.keysym.sym == SDLK_2)
-                    // if (xMouse >= 211 && xMouse <= 394 && yMouse >= 373 && yMouse <= 543)
-                    {
-                        // Spaceship 2
-                        Screen = 6;
-                        gTexture = loadTexture("CuttingBoard.png");
-                        CuttingBoard.createSpaceship(2);
-                    }
-                    if (e.key.keysym.sym == SDLK_3)
-                    // if (xMouse >= 760 && xMouse <= 980 && yMouse >= 133 && yMouse <= 287)
-                    {
-                        // Spaceship 3
-                        Screen = 6;
-                        gTexture = loadTexture("CuttingBoard.png");
-                        CuttingBoard.createSpaceship(3);
-                    }
-                    // if (xMouse >= 754 && xMouse <= 940 && yMouse >= 330 && yMouse <= 556)
-                    if (e.key.keysym.sym == SDLK_4)
-                    {
-                        // Spaceship 4
-                        Screen = 6;
-                        gTexture = loadTexture("CuttingBoard.png");
-                        CuttingBoard.createSpaceship(4);
-                    }
-                    // if (xMouse >= 493 && xMouse <= 660 && yMouse >= 181 && yMouse <= 398)
-                    if (e.key.keysym.sym == SDLK_5)
-                    {
-                        // Spaceship 5
-                        Screen = 6;
-                        gTexture = loadTexture("CuttingBoard.png");
-                        CuttingBoard.createSpaceship(5);
-                    }
-                    if (e.key.keysym.sym == SDLK_6)
-                    // if (xMouse >= 480 && xMouse <= 688 && yMouse >= 443 && yMouse <= 563)
-                    {
-                        // Spaceship 6
-                        Screen = 6;
-                        gTexture = loadTexture("CuttingBoard.png");
-                        CuttingBoard.createSpaceship(6);
-                    }
+            //         if (e.key.keysym.sym == SDLK_1)
+            //         // if (xMouse >= 169 && xMouse <= 393 && yMouse >= 144 && yMouse <= 295)
+            //         {
+            //             // Spaceship 1
+            //             Screen = 6;
+            //             gTexture = loadTexture("CuttingBoard.png");
+            //             CuttingBoard.createSpaceship(1);
+            //         }
+            //         if (e.key.keysym.sym == SDLK_2)
+            //         // if (xMouse >= 211 && xMouse <= 394 && yMouse >= 373 && yMouse <= 543)
+            //         {
+            //             // Spaceship 2
+            //             Screen = 6;
+            //             gTexture = loadTexture("CuttingBoard.png");
+            //             CuttingBoard.createSpaceship(2);
+            //         }
+            //         if (e.key.keysym.sym == SDLK_3)
+            //         // if (xMouse >= 760 && xMouse <= 980 && yMouse >= 133 && yMouse <= 287)
+            //         {
+            //             // Spaceship 3
+            //             Screen = 6;
+            //             gTexture = loadTexture("CuttingBoard.png");
+            //             CuttingBoard.createSpaceship(3);
+            //         }
+            //         // if (xMouse >= 754 && xMouse <= 940 && yMouse >= 330 && yMouse <= 556)
+            //         if (e.key.keysym.sym == SDLK_4)
+            //         {
+            //             // Spaceship 4
+            //             Screen = 6;
+            //             gTexture = loadTexture("CuttingBoard.png");
+            //             CuttingBoard.createSpaceship(4);
+            //         }
+            //         // if (xMouse >= 493 && xMouse <= 660 && yMouse >= 181 && yMouse <= 398)
+            //         if (e.key.keysym.sym == SDLK_5)
+            //         {
+            //             // Spaceship 5
+            //             Screen = 6;
+            //             gTexture = loadTexture("CuttingBoard.png");
+            //             CuttingBoard.createSpaceship(5);
+            //         }
+            //         if (e.key.keysym.sym == SDLK_6)
+            //         // if (xMouse >= 480 && xMouse <= 688 && yMouse >= 443 && yMouse <= 563)
+            //         {
+            //             // Spaceship 6
+            //             Screen = 6;
+            //             gTexture = loadTexture("CuttingBoard.png");
+            //             CuttingBoard.createSpaceship(6);
+            //         }
                     // if (e.key.keysym.sym == SDLK_1)
                     // else if (xMouse >= 480 && xMouse <= 688 && yMouse >= 443 && yMouse <= 563)
                     // {
@@ -385,12 +392,8 @@ void Game::run()
                     //     gTexture = loadTexture("CuttingBoard.png");
                     //     CuttingBoard.createSpaceship(6);
                     // }
-                }
-            }
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE && Screen == 6)
-            {
-                CuttingBoard.getSpaceship()->createBullets();
-            }
+            //     }
+            // }
 
             // okay wala
             // if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN && Screen == 5)
@@ -399,7 +402,7 @@ void Game::run()
             //     gTexture = loadTexture("CuttingBoard.png");
             // }
             // BattleField.fire();
-        }
+        //}
         // if (Screen == 2 and xMouse >= 404 && xMouse <= 752 && yMouse >= 36 && yMouse <= 645)
         // {
         //     Screen = 6;
@@ -448,4 +451,5 @@ void Game::run()
             frameCounter = 0;
         }
     }
+}
 }

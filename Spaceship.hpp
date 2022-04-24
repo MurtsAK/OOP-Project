@@ -19,11 +19,12 @@ public:
     Spaceship(SDL_Renderer *, SDL_Texture *, SDL_Rect mov, int spaceship);
     SDL_Rect getMov();
     void draw(SDL_Renderer *, SDL_Texture *);
+    void moveLeft();
+    void moveRight();
     void createBullets();
     void blastAnimation();
     void Fire();
     bool getCollision();
     void setCollision();
-    void setMov(int x, int y);
     ~Spaceship();
 };

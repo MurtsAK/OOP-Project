@@ -49,9 +49,12 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     }
 }
 
-void Spaceship::setMov(int x, int y)
-{
-    mover.x = x-25;
+void Spaceship::moveLeft(){
+    mover.x -= 10;
+}
+
+void Spaceship::moveRight(){
+    mover.x += 10;
 }
 
 void Spaceship::blastAnimation() {}
