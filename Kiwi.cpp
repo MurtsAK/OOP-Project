@@ -28,7 +28,7 @@ void Kiwi::dropObstacles()
     int randomY;
     // randomY = 10 + rand() % 15;
     randomY = 10;
-    mover.y += randomY;
+    mover.y +=randomY;
 }
 
 SDL_Rect Kiwi::getMov()

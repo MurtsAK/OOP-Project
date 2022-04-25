@@ -17,7 +17,7 @@ void Bomb::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 
 void Bomb::dropEnemies()
 {
-    srand(time(0));
+    //srand(time(0));
     int randomY;
     randomY = 10 + rand() % 15;
     mover.y += randomY;

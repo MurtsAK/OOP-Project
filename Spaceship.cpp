@@ -50,11 +50,11 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 }
 
 void Spaceship::moveLeft(){
-    mover.x -= 10;
+    mover.x -= 50;
 }
 
 void Spaceship::moveRight(){
-    mover.x += 10;
+    mover.x += 50;
 }
 
 void Spaceship::blastAnimation() {}

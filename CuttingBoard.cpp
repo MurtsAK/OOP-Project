@@ -146,7 +146,7 @@ void CuttingBoard::displayHealth()
     if (totalHealth.getHealth() >= 0)
     {
         SDL_Rect src = {1039, 813, 183, 183};
-        SDL_Rect mover = {1100, 160, 30, 30};
+        SDL_Rect mover = {1100, 300, 50, 50};
         for (int i = 0; i < totalHealth.getHealth(); i++)
         {
             if (i % 3 == 0)
@@ -199,7 +199,7 @@ Spaceship* CuttingBoard::getSpaceship()
 
 void CuttingBoard::createObject()
 {
-    int randomObject, randomEnemy, randomFruit, randomCollectible, randomX;
+    int randomObject, randomEnemy, randomObstacle, randomCollectible, randomX;
     srand(time(0));
     randomX = 1 + rand() % 10;
     randomX = 100 * randomX;
@@ -224,30 +224,30 @@ void CuttingBoard::createObject()
     //     randomX = 1000;
     // }
 
-    // std::cout << randomX << std::endl;
+    std::cout << randomX << std::endl;
 
     SDL_Rect objectMov = {randomX, 10, 75, 90};
 
     randomObject = 1 + rand() % 100;
     if (randomObject < 61)
     {
-        randomFruit = rand() % 5;
-        if (randomFruit == 0)
+        randomObstacle = rand() % 5;
+        if (randomObstacle == 0)
         {
             Obstacles.push_back(new Banana(gRenderer, assets, objectMov));
             // artificialDelay();
         }
-        else if (randomFruit == 1)
+        else if (randomObstacle == 1)
         {
             Obstacles.push_back(new Kiwi(gRenderer, assets, objectMov));
             // artificialDelay();
         }
-        else if (randomFruit == 2)
+        else if (randomObstacle == 2)
         {
             Obstacles.push_back(new Lemon(gRenderer, assets, objectMov));
             // artificialDelay();
         }
-        else if (randomFruit == 3)
+        else if (randomObstacle == 3)
         {
             Obstacles.push_back(new Orange(gRenderer, assets, objectMov));
             // artificialDelay();

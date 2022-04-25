@@ -10,7 +10,9 @@ void Obstacle::cutAnimation() {}
 
 void Obstacle::dropObstacles() {}
 
-SDL_Rect Obstacle::getMov() {}
+SDL_Rect Obstacle::getMov(
+   // ObjectMov.y+=10;
+) {}
 
 bool Obstacle::getIsClicked() {}
 

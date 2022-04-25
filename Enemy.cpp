@@ -10,7 +10,9 @@ void Enemy::dropEnemies() {}
 
 int Enemy::LifeDeduct() {}
 
-SDL_Rect Enemy::getMov() {}
+SDL_Rect Enemy::getMov(
+    //ObjectMov.y+=10;
+) {}
 
 void Enemy::animateEnemy() {}
 
