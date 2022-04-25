@@ -50,11 +50,15 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 }
 
 void Spaceship::moveLeft(){
+    if(mover.x>1){
     mover.x -= 50;
+    }
 }
 
 void Spaceship::moveRight(){
+    if(mover.x<1100){
     mover.x += 50;
+    }
 }
 
 void Spaceship::blastAnimation() {}
