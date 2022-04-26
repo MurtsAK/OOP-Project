@@ -19,9 +19,19 @@ void HealthPoints::updateHealth(int h)
     }
 }
 
+void HealthPoints::updateGems(int g)
+{
+    totalGems += 1;
+}
+
 int HealthPoints::getHealth()
 {
     return totalHealth;
+}
+
+int HealthPoints::getGems()
+{
+    return totalGems;
 }
 
 // void HealthPoints::displayHealth(SDL_Renderer *gRenderer, SDL_Texture *assets)

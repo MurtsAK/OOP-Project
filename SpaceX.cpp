@@ -1,8 +1,10 @@
 #include "SpaceX.hpp"
 #include <iostream>
+#include <string>
 #include <time.h>
 #include "Score.hpp"
 #include "HealthPoints.hpp"
+using namespace std;
 
 void SpaceX::deleteObjects()
 {
@@ -38,31 +40,31 @@ void SpaceX::deleteObjects()
 
 void SpaceX::checkMouseClick(int x, int y, int &Screen) // fucntion where objects of the game are interacting with the bullets and co.
 {
-    SDL_Rect getmov; // variable to store movements and locations of enemies, collectibles & obstacles
-    SDL_Rect spaceship_loc; // variable to store movements and locations of spaceship chosen
-    SDL_Rect bullet_loc; // variable to store movement and location of bullet fired
-    bool isclicked; // boolean variable to confirm collision
+    SDL_Rect getmov;              // variable to store movements and locations of enemies, collectibles & obstacles
+    SDL_Rect spaceship_loc;       // variable to store movements and locations of spaceship chosen
+    SDL_Rect bullet_loc;          // variable to store movement and location of bullet fired
+    bool isclicked;               // boolean variable to confirm collision
     list<Bullets *> bullets_list; // variable to store every bullet fired, for use in locating
 
     bullets_list = spaceship_in_game->getBullets();
     spaceship_loc = spaceship_in_game->getMov();
-    int m=0;
+    int m = 0;
     for (auto B : bullets_list)
     {
         bullet_loc = B->getLocation(); // get bullet location
-        //cout << "bullet location X: " << bullet_loc.x << " Y: " << bullet_loc.y << endl;
+        // cout << "bullet location X: " << bullet_loc.x << " Y: " << bullet_loc.y << endl;
 
         for (auto F : Obstacles) // first loop around every obstacle present on screen
         {
             isclicked = F->getIsClicked(); // get status of wether collision has happened or not
-            getmov = F->getMov(); // get obstacles location
+            getmov = F->getMov();          // get obstacles location
             // cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
-            
-            //if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+
+            // if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
             if (!isclicked)
             {
-            if(SDL_HasIntersection(&bullet_loc,&getmov))
-            {
+                if (SDL_HasIntersection(&bullet_loc, &getmov))
+                {
                     cout << "inside isclicked" << endl;
                     F->setIsClicked();
                     F->cutAnimation();
@@ -80,22 +82,22 @@ void SpaceX::checkMouseClick(int x, int y, int &Screen) // fucntion where object
         }
         for (auto E : Enemies) // now loop over all enemies
         {
-            isclicked = E->getIsClicked(); // get status of collision
-            getmov = E->getMov(); // get movement and location of enemy
+            isclicked = E->getIsClicked();  // get status of collision
+            getmov = E->getMov();           // get movement and location of enemy
             if (spaceship_loc.y < getmov.y) // if the enemy goes through the screen unharmed you lose health
             {
                 if (!isclicked)
                 {
-                    E->setIsClicked(); // status changed to collided
+                    E->setIsClicked();                         // status changed to collided
                     totalHealth.updateHealth(E->LifeDeduct()); // reduce health by 1 point
-                    if (totalHealth.getHealth() <= 0) // if health goes to 0, game over
+                    if (totalHealth.getHealth() <= 0)          // if health goes to 0, game over
                     {
                         Screen = 7; // game over screen
                     }
                 }
             }
-            //else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
-            else if(SDL_HasIntersection(&bullet_loc,&getmov))
+            // else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+            else if (SDL_HasIntersection(&bullet_loc, &getmov))
             {
                 E->setIsClicked();
                 E->animateEnemy();
@@ -105,27 +107,32 @@ void SpaceX::checkMouseClick(int x, int y, int &Screen) // fucntion where object
         }
         for (auto C : Collectibles) // finally, loop over all collectibles present on screen
         {
+            string checker = typeid(*C).name();
+            // cout <<"hello  " << checker << endl;
             isclicked = C->getIsClicked();
             getmov = C->getMov();
-            //if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
-            if(SDL_HasIntersection(&spaceship_loc,&getmov))
+            // if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
+            if (SDL_HasIntersection(&spaceship_loc, &getmov))
             {
                 if (!isclicked)
                 {
-                    if ()
+                    if (checker == "7Diamond")
                     {
-                        /* code */
+                        C->setIsClicked();      // change status to obtained
+                        C->removeCollectible(); // remove collectible from screen
+                        totalHealth.updateGems(1);
                     }
-                    
-                    C->setIsClicked(); // change status to obtained
-                    C->removeCollectible(); // remove collectible from screen
-                    totalHealth.updateHealth(C->healthIncrease()); // increase user health by 1 point
+                    else
+                    {
+                        C->setIsClicked();                             // change status to obtained
+                        C->removeCollectible();                        // remove collectible from screen
+                        totalHealth.updateHealth(C->healthIncrease()); // increase user health by 1 point
+                    }
                 }
             }
         }
     }
 }
-
 
 //  void SpaceX::collisionDetection(SDL_Rect b, SDL_Rect sp) {
 //     for(int c=0; b.x; c++) {
@@ -207,26 +214,46 @@ void SpaceX::displayHealth()
             mover.x += 20;
         }
     }
+    if (totalHealth.getGems() >= 0) // if game not over essentially
+    {
+        SDL_Rect srcGem = {1272, 850, 164, 156};
+        SDL_Rect moverGem = {30, 350, 30, 30};
+        for (int i = 0; i < totalHealth.getGems(); i++)
+        {
+            if (i % 3 == 0)
+            { // positioning of health icons on screen
+                moverGem.x = 1100;
+                moverGem.y += 40;
+            }
+            SDL_RenderCopy(gRenderer, assets, &srcGem, &moverGem);
+            moverGem.x += 20;
+        }
+    }
 }
 
 void SpaceX::drawObjects()
 {
     bool isclicked;
-    int i=0;int j=0;int k=0;
+    int i = 0;
+    int j = 0;
+    int k = 0;
     // totalHealth.displayHealth(gRenderer, assets);
     for (auto E : Enemies)
     {
-        if (!E->outOfScreen()){
+        if (!E->outOfScreen())
+        {
             E->draw(gRenderer, assets); // draw enemies on screen
-            E->dropEnemies(); // drop them from the top
+            E->dropEnemies();           // drop them from the top
             isclicked = E->getIsClicked();
             if (isclicked)
             {
                 E->animateEnemy();
             }
-        }else{
-            list<Enemy*>::iterator it1 = Enemies.begin();
-            advance(it1,i);
+        }
+        else
+        {
+            list<Enemy *>::iterator it1 = Enemies.begin();
+            advance(it1, i);
             Enemies.erase(it1);
             delete E; // if out of screen, delete enemy object
         }
@@ -235,28 +262,33 @@ void SpaceX::drawObjects()
 
     for (auto F : Obstacles) // exactly same function as above for enemies objects
     {
-        if (!F->outOfScreen()){
+        if (!F->outOfScreen())
+        {
             F->draw(gRenderer, assets);
             F->dropObstacles();
-        }else{
-            list<Obstacle*>::iterator it2 = Obstacles.begin();
-            advance(it2,j);
+        }
+        else
+        {
+            list<Obstacle *>::iterator it2 = Obstacles.begin();
+            advance(it2, j);
             Obstacles.erase(it2);
             delete F;
         }
     }
     for (auto C : Collectibles) // exactly same functions as above for enemies and obstaces objects
     {
-        if (!C->outOfScreen()){
+        if (!C->outOfScreen())
+        {
             C->draw(gRenderer, assets);
             C->dropCollectibles();
-        }else{
-            list<Collectible*>::iterator it3 = Collectibles.begin();
-            advance(it3,k);
+        }
+        else
+        {
+            list<Collectible *>::iterator it3 = Collectibles.begin();
+            advance(it3, k);
             Collectibles.erase(it3);
             delete C;
         }
-       
     }
 }
 void SpaceX::drawSpaceship() // function to draw chosen spaceship
@@ -265,9 +297,9 @@ void SpaceX::drawSpaceship() // function to draw chosen spaceship
     spaceship_in_game->draw(gRenderer, assets);
 }
 
-Spaceship *SpaceX::getSpaceship() //function to return pointer of the spaceship object
+Spaceship *SpaceX::getSpaceship() // function to return pointer of the spaceship object
 {
-    return spaceship_in_game; 
+    return spaceship_in_game;
 }
 
 void SpaceX::createObject() // function to make spacehsip
@@ -417,4 +449,4 @@ SpaceX::~SpaceX()
     Obstacles.clear();
     Enemies.clear();
     std::cout << "Objects deleted";
-}   
+}

@@ -15,8 +15,8 @@ class health_and_score{
     int totalHealth;
     // std::map<std::TTF_Font*>
     public:
-    void health_status();
-    void update(SDL_Renderer *, SDL_Texture *);
+    void health_status(int x);
+    void update(SDL_Renderer *, SDL_Texture *, int x);
     // void printing_score();
     health_and_score(int);
     void updateHealth(int);
