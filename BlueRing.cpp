@@ -1,6 +1,6 @@
-#include "RottenObstacle.hpp"
+#include "BlueRing.hpp"
 
-RottenObstacle::RottenObstacle(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Enemy(rend, ast)
+BlueRing::BlueRing(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Enemy(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
@@ -8,13 +8,13 @@ RottenObstacle::RottenObstacle(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mo
     src = {830, 1283, 34, 34};
 }
 
-void RottenObstacle::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
+void BlueRing::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
     // Body is drawn and moves horizontal direction at the speed of 4 units
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
 }
 
-void RottenObstacle::dropEnemies()
+void BlueRing::dropEnemies()
 {
     srand(time(0));
     int randomY;
@@ -22,17 +22,17 @@ void RottenObstacle::dropEnemies()
     mover.y += randomY;
 }
 
-int RottenObstacle::LifeDeduct()
+int BlueRing::LifeDeduct()
 {
     return -1;
 }
 
-SDL_Rect RottenObstacle::getMov()
+SDL_Rect BlueRing::getMov()
 {
     return mover;
 }
 
-void RottenObstacle::animateEnemy()
+void BlueRing::animateEnemy()
 {
     static int currentState = 0;
     if (currentState == 0)
@@ -49,12 +49,12 @@ void RottenObstacle::animateEnemy()
     }
 }
 
-bool RottenObstacle::getIsClicked()
+bool BlueRing::getIsClicked()
 {
     return isClicked;
 }
 
-void RottenObstacle::setIsClicked()
+void BlueRing::setIsClicked()
 {
     isClicked = true;
 }

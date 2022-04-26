@@ -1,6 +1,6 @@
 #pragma once
 #include<SDL.h>
-#include "CuttingBoard.hpp"
+#include "SpaceX.hpp"
 #include <stdio.h>
 #include <iostream>
 #include <string>

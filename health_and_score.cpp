@@ -15,7 +15,7 @@ void health_and_score::updateHealth(int h)
 }
 
 void health_and_score::health_status(){
-	// int health_left = CuttingBoard.get_health_remaining();
+	// int health_left = SpaceX.get_health_remaining();
 	SDL_Rect statusSrc, statusMover;
 	statusSrc = {1039, 813, 183, 183};
 	statusMover = {30, 550, 30, 30};
