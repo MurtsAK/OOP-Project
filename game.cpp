@@ -6,7 +6,7 @@
 #include "HealthPoints.hpp"
 #include "Spaceship.hpp"
 #include <time.h>
-bool Game::init()
+bool Game::init() //this is our game initliaziting function 
 {
     // Initialization flag
     bool success = true;
@@ -66,19 +66,19 @@ bool Game::init()
     return success;
 }
 
-bool Game::loadMedia()
+bool Game::loadMedia() //this function will load all our media including our main menu screen, playing screen, assests and sounds.
 {
     // Loading success flag
     bool success = true;
 
-    assets = loadTexture("assets.png");
-    gTexture = loadTexture("MainMenu.png");
+    assets = loadTexture("assets.png"); //getting assests
+    gTexture = loadTexture("MainMenu.png"); //getting our mainmenu screen
     if (assets == NULL || gTexture == NULL)
     {
         printf("Unable to run due to error: %s\n", SDL_GetError());
         success = false;
     }
-    gMusic = Mix_LoadMUS("bg_music.mp3");
+    gMusic = Mix_LoadMUS("bg_music.mp3"); //getting the background music
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
     {
         printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
@@ -88,7 +88,7 @@ bool Game::loadMedia()
     return success;
 }
 
-void Game::close()
+void Game::close() //this function would close the game when it ended naturally or forcefully ended by the user
 {
     // Free loaded images
     SDL_DestroyTexture(assets);
@@ -135,7 +135,7 @@ SDL_Texture *Game::loadTexture(std::string path)
     return newTexture;
 }
 
-void Game::run()
+void Game::run() //this is the most important function of out game class which helps in the dynamicity and running of our game
 {
     bool quit = false;
     SDL_Event e;
@@ -144,9 +144,9 @@ void Game::run()
     {
         Mix_PlayMusic(gMusic, -2);
     }
-    Score totalScore(0);
-    HealthPoints totalHealth(3);
-    SpaceX SpaceX(gRenderer, assets, totalScore, totalHealth);
+    Score totalScore(0); //initializing score
+    HealthPoints totalHealth(3); //initializing health
+    SpaceX SpaceX(gRenderer, assets, totalScore, totalHealth); //initiliazing our game screen
     bool objectCreated = false;
     int frameCounter = 0;
     // MainMenu MainMenu(gRenderer, assets);
@@ -166,8 +166,6 @@ void Game::run()
             }
             if (e.type == SDL_MOUSEBUTTONDOWN)
             {
-                // this is a good location to add pigeon in linked list.
-                //  mousePressed = true;
 
                 SDL_GetMouseState(&xMouse, &yMouse);
                 std::cout << xMouse << " " << yMouse << std::endl;
