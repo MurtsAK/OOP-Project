@@ -282,11 +282,13 @@ void Game::run() //this is the most important function of out game class which h
                 //pressing left right arrow keys moves the spaceship
                 if (e.key.keysym.sym == SDLK_LEFT && Screen == 6)
                 {
-                    SpaceX.getSpaceship()->moveLeft();
+                    //operator overloading 
+                    ++(*SpaceX.getSpaceship());
                 }
                 else if(e.key.keysym.sym == SDLK_RIGHT && Screen == 6)
                 {
-                    SpaceX.getSpaceship()->moveRight();
+                    //operator overloading
+                    (*SpaceX.getSpaceship())++;
                 }
             }
         }

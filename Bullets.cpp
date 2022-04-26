@@ -4,8 +4,7 @@ void Bullets::draw(SDL_Renderer *rend, SDL_Texture *ast){
     SDL_RenderCopy(gRenderer, assets, &srcB, &moverB);
 }
 
-void Bullets::move()
-{
+void Bullets::operator ++(){
     moverB.y-=10;
 }
 

@@ -2,7 +2,6 @@
 
 Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spaceship) : gRenderer(rend), assets(ast)
 {
-    //getting spaceship and then displaying it
     mover = mov;
     spaceship_type = spaceship;
     // src = {10, 144, 86, 80};
@@ -46,34 +45,30 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
     for (auto B :  bullets){
         B->draw(gRenderer,assets);
-        B->move();
+        ++(*B); //operator overloading for bullets which moves them
     }
 }
 
-void Spaceship::moveLeft(){
-    //first checking if the spaceship is still in the screen, then moving it  towards left 
+void Spaceship::operator ++ (){
     if(mover.x>1){
-    mover.x -= 50;
+        mover.x -= 50;
     }
 }
 
-void Spaceship::moveRight(){
-    //first checking if the spaceship is still in the screen, then moving it towards right
+void Spaceship::operator ++ (int y){
     if(mover.x<1100){
-    mover.x += 50;
+        mover.x += 50;
     }
 }
 
 void Spaceship::blastAnimation() {}
 
 void Spaceship::createBullets()
-//here we create bullets 
 {
     if (bullets.empty()){
         bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
     }else{
     if (restTime>5){
-        //bullets would be fired after a certain interval
         bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
         restTime=0;
     }
@@ -91,9 +86,9 @@ bool Spaceship::getCollision() {}
 
 void Spaceship::setCollision() {}
 
-Spaceship::~Spaceship() //deleting spaceship
+Spaceship::~Spaceship()
 {
-    for (auto B : bullets){ //deleting bullets
+    for (auto B : bullets){
         delete B;
     }
     bullets.clear();
