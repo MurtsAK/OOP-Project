@@ -174,7 +174,7 @@ void Game::run() //this is the most important function of out game class which h
                     Screen = 1;
                     gTexture = loadTexture("ABOUT_Menu.png");
                 }
-                else if (xMouse >= 461 && xMouse <= 695 && yMouse >= 456 && yMouse <= 583 && Screen == 0) / //checking when the levels button is pressed by checking the coordinates
+                else if (xMouse >= 461 && xMouse <= 695 && yMouse >= 456 && yMouse <= 583 && Screen == 0) //checking when the levels button is pressed by checking the coordinates
                 {
                     Screen = 2;
                     gTexture = loadTexture("Levels.png");
