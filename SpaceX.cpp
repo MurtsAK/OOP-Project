@@ -10,7 +10,7 @@ void SpaceX::deleteObjects()
     for (auto E : Enemies)
     {
         ObjectMov = E->getMov();
-        if (ObjectMov.y > 700)
+        if (ObjectMov.y > 700) // if enemy out of screen, destroy it
         {
             delete E;
             Enemies.remove(E);
@@ -19,7 +19,7 @@ void SpaceX::deleteObjects()
     for (auto F : Obstacles)
     {
         ObjectMov = F->getMov();
-        if (ObjectMov.y > 700)
+        if (ObjectMov.y > 700) // if obstacle out of screen, destroy it
         {
             delete F;
             Obstacles.remove(F);
@@ -28,7 +28,7 @@ void SpaceX::deleteObjects()
     for (auto C : Collectibles)
     {
         ObjectMov = C->getMov();
-        if (ObjectMov.y > 700)
+        if (ObjectMov.y > 700) // if collectible out of screen, destroy it
         {
             delete C;
             Collectibles.remove(C);
@@ -36,27 +36,35 @@ void SpaceX::deleteObjects()
     }
 }
 
-void SpaceX::checkMouseClick(int x, int y, int Screen)
+void SpaceX::checkMouseClick(int x, int y, int Screen) // fucntion where objects of the game are interacting with the bullets and co.
 {
-    SDL_Rect getmov;
-    SDL_Rect spaceship_loc;
-    SDL_Rect bullet_loc;
-    bool isclicked;
-    list<Bullets *> bullets_list;
+    SDL_Rect getmov; // variable to store movements and locations of enemies, collectibles & obstacles
+    SDL_Rect spaceship_loc; // variable to store movements and locations of spaceship chosen
+    SDL_Rect bullet_loc; // variable to store movement and location of bullet fired
+    bool isclicked; // boolean variable to confirm collision
+    list<Bullets *> bullets_list; // variable to store every bullet fired, for use in locating
 
+<<<<<<< Updated upstream
     bullets_list = spaceship_in_game->getBullets();
     spaceship_loc = spaceship_in_game->getMov();
     int m=0;
     for (auto B : bullets_list)
-    {
-        bullet_loc = B->getLocation();
-        cout << "bullet location X: " << bullet_loc.x << " Y: " << bullet_loc.y << endl;
+=======
+    bullets_list = spaceship_in_game->getBullets(); // obtaining list of bullets
+    spaceship_loc = spaceship_in_game->getMov(); // obtaining location of spaceship
 
-        for (auto F : Obstacles)
+    for (auto B : bullets_list) // loop around every bullet that is currently on screen
+>>>>>>> Stashed changes
+    {
+        bullet_loc = B->getLocation(); // get bullet location
+        //cout << "bullet location X: " << bullet_loc.x << " Y: " << bullet_loc.y << endl;
+
+        for (auto F : Obstacles) // first loop around every obstacle present on screen
         {
-            isclicked = F->getIsClicked();
-            getmov = F->getMov();
+            isclicked = F->getIsClicked(); // get status of wether collision has happened or not
+            getmov = F->getMov(); // get obstacles location
             // cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
+<<<<<<< Updated upstream
             
             //if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
             if(collisionDetection(&bullet_loc,&getmov))
@@ -70,46 +78,69 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
                     advance(it4,m);
                     bullets_list.erase(it4);
                     delete B;
+=======
+            if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+            { // if the obstacles land in a square containing bullet, it will get destroyed and score increases
+                if (!isclicked)
+                {
+                    F->setIsClicked(); // status changed to collided
+                    F->cutAnimation(); // animation for explosion triggered
+                    totalScore.ScoreUpdate(); // score increases
+>>>>>>> Stashed changes
                 }
             }
             m++;
         }
-        for (auto E : Enemies)
+        for (auto E : Enemies) // now loop over all enemies
         {
-            isclicked = E->getIsClicked();
-            getmov = E->getMov();
-            if (spaceship_loc.y < getmov.y)
+            isclicked = E->getIsClicked(); // get status of collision
+            getmov = E->getMov(); // get movement and location of enemy
+            if (spaceship_loc.y < getmov.y) // if the enemy goes through the screen unharmed you lose health
             {
                 if (!isclicked)
                 {
-                    E->setIsClicked();
-                    totalHealth.updateHealth(E->LifeDeduct());
-                    if (totalHealth.getHealth() <= 0)
+                    E->setIsClicked(); // status changed to collided
+                    totalHealth.updateHealth(E->LifeDeduct()); // reduce health by 1 point
+                    if (totalHealth.getHealth() <= 0) // if health goes to 0, game over
                     {
-                        Screen = 7;
+                        Screen = 7; // game over screen
                     }
                 }
             }
+<<<<<<< Updated upstream
             //else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
             else if(collisionDetection(&bullet_loc,&getmov))
             {
                 E->setIsClicked();
                 E->animateEnemy();
                 totalScore.ScoreUpdate();
+=======
+            else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+            { // if enemy get hit with bullet, destroy it and increase score
+                E->setIsClicked(); // change status to collided
+                E->animateEnemy(); // trigger animation for collision
+                totalScore.ScoreUpdate(); // increase score
+>>>>>>> Stashed changes
             }
         }
-        for (auto C : Collectibles)
+        for (auto C : Collectibles) // finally, loop over all collectibles present on screen
         {
             isclicked = C->getIsClicked();
+<<<<<<< Updated upstream
             getmov = C->getMov();
             //if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
             if(collisionDetection(&spaceship_loc,&getmov))
             {
+=======
+            getmov = C->getMov(); // get movement and location of each collectible
+            if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
+            { // if the collectible happens to be near on over the spaceship, it is gained
+>>>>>>> Stashed changes
                 if (!isclicked)
                 {
-                    C->setIsClicked();
-                    C->removeCollectible();
-                    totalHealth.updateHealth(C->healthIncrease());
+                    C->setIsClicked(); // change status to obtained
+                    C->removeCollectible(); // remove collectible from screen
+                    totalHealth.updateHealth(C->healthIncrease()); // increase user health by 1 point
                 }
             }
         }
@@ -190,14 +221,14 @@ void SpaceX::displayScore()
 
 void SpaceX::displayHealth()
 {
-    if (totalHealth.getHealth() >= 0)
+    if (totalHealth.getHealth() >= 0) // if game not over essentially
     {
         SDL_Rect src = {1039, 813, 183, 183};
         SDL_Rect mover = {1100, 300, 50, 50};
         for (int i = 0; i < totalHealth.getHealth(); i++)
         {
             if (i % 3 == 0)
-            {
+            { // positioning of health icons on screen
                 mover.x = 1100;
                 mover.y += 40;
             }
@@ -215,8 +246,8 @@ void SpaceX::drawObjects()
     for (auto E : Enemies)
     {
         if (!E->outOfScreen()){
-            E->draw(gRenderer, assets);
-            E->dropEnemies();
+            E->draw(gRenderer, assets); // draw enemies on screen
+            E->dropEnemies(); // drop them from the top
             isclicked = E->getIsClicked();
             if (isclicked)
             {
@@ -226,12 +257,12 @@ void SpaceX::drawObjects()
             list<Enemy*>::iterator it1 = Enemies.begin();
             advance(it1,i);
             Enemies.erase(it1);
-            delete E;
+            delete E; // if out of screen, delete enemy object
         }
         i++;
     }
 
-    for (auto F : Obstacles)
+    for (auto F : Obstacles) // exactly same function as above for enemies objects
     {
         if (!F->outOfScreen()){
             F->draw(gRenderer, assets);
@@ -243,7 +274,7 @@ void SpaceX::drawObjects()
             delete F;
         }
     }
-    for (auto C : Collectibles)
+    for (auto C : Collectibles) // exactly same functions as above for enemies and obstaces objects
     {
         if (!C->outOfScreen()){
             C->draw(gRenderer, assets);
@@ -257,18 +288,18 @@ void SpaceX::drawObjects()
        
     }
 }
-void SpaceX::drawSpaceship()
+void SpaceX::drawSpaceship() // function to draw chosen spaceship
 {
     bool Collision;
     spaceship_in_game->draw(gRenderer, assets);
 }
 
-Spaceship *SpaceX::getSpaceship()
+Spaceship *SpaceX::getSpaceship() //function to return pointer of the spaceship object
 {
-    return spaceship_in_game;
+    return spaceship_in_game; 
 }
 
-void SpaceX::createObject()
+void SpaceX::createObject() // function to make spacehsip
 {
     int randomObject, randomEnemy, randomObstacle, randomCollectible, randomX;
     srand(time(0));
