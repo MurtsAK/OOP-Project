@@ -36,7 +36,7 @@ void SpaceX::deleteObjects()
     }
 }
 
-void SpaceX::checkMouseClick(int x, int y, int Screen) // fucntion where objects of the game are interacting with the bullets and co.
+void SpaceX::checkMouseClick(int x, int y, int &Screen) // fucntion where objects of the game are interacting with the bullets and co.
 {
     SDL_Rect getmov; // variable to store movements and locations of enemies, collectibles & obstacles
     SDL_Rect spaceship_loc; // variable to store movements and locations of spaceship chosen
@@ -112,6 +112,11 @@ void SpaceX::checkMouseClick(int x, int y, int Screen) // fucntion where objects
             {
                 if (!isclicked)
                 {
+                    if ()
+                    {
+                        /* code */
+                    }
+                    
                     C->setIsClicked(); // change status to obtained
                     C->removeCollectible(); // remove collectible from screen
                     totalHealth.updateHealth(C->healthIncrease()); // increase user health by 1 point

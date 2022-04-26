@@ -41,7 +41,7 @@ public:
     void drawSpaceship();
     bool collisionDetection(SDL_Rect *,SDL_Rect *);
     Spaceship* getSpaceship();
-    void checkMouseClick(int, int, int);
+    void checkMouseClick(int, int, int&);
     void deleteObjects();
     // void dropObjects();
     // void fire();
