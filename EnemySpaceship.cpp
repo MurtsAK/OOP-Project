@@ -1,6 +1,6 @@
-#include "EnemeySpaceship.hpp"
+#include "EnemySpaceship.hpp"
 // blue astroid
-EnemeySpaceship::EnemeySpaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Enemy(rend, ast)
+EnemySpaceship::EnemySpaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Enemy(rend, ast)
 {
     // Tank Body's location in asset.png
     mover = mov;
@@ -9,13 +9,22 @@ EnemeySpaceship::EnemeySpaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect 
     src = {552, 1254, 86, 80};
 }
 
-void EnemeySpaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
+void EnemySpaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
     // Body is drawn and moves horizontal direction at the speed of 4 units
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
 }
 
-void EnemeySpaceship::dropEnemies()
+bool EnemySpaceship::outOfScreen()
+{
+    if (mover.y>700)
+    {
+        return true;
+    }
+    return false;
+}
+
+void EnemySpaceship::dropEnemies()
 {
     srand(time(0));
     int randomY;
@@ -23,17 +32,17 @@ void EnemeySpaceship::dropEnemies()
     mover.y += randomY;
 }
 
-int EnemeySpaceship::LifeDeduct()
+int EnemySpaceship::LifeDeduct()
 {
     return -1;
 }
 
-SDL_Rect EnemeySpaceship::getMov()
+SDL_Rect EnemySpaceship::getMov()
 {
     return mover;
 }
 
-void EnemeySpaceship::animateEnemy()
+void EnemySpaceship::animateEnemy()
 {
     static int currentState = 0;
     if (currentState == 0)
@@ -50,12 +59,12 @@ void EnemeySpaceship::animateEnemy()
     }
 }
 
-bool EnemeySpaceship::getIsClicked()
+bool EnemySpaceship::getIsClicked()
 {
     return isClicked;
 }
 
-void EnemeySpaceship::setIsClicked()
+void EnemySpaceship::setIsClicked()
 {
     isClicked = true;
 }

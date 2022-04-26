@@ -19,3 +19,5 @@ void Enemy::animateEnemy() {}
 bool Enemy::getIsClicked() {}
 
 void Enemy::setIsClicked() {}
+
+bool Enemy::outOfScreen() {}

@@ -15,6 +15,15 @@ void YellowEnemy::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
 }
 
+bool YellowEnemy::outOfScreen()
+{
+    if (mover.y>700)
+    {
+        return true;
+    }
+    return false;
+}
+
 void YellowEnemy::cutAnimation()
 {
     // src = {1001, 256, 142, 129};

@@ -13,5 +13,6 @@ public:
     void animateEnemy();
     bool getIsClicked();
     void setIsClicked();
+    bool outOfScreen();
     SDL_Rect getMov();
 };
