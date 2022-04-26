@@ -44,17 +44,10 @@ void SpaceX::checkMouseClick(int x, int y, int Screen) // fucntion where objects
     bool isclicked; // boolean variable to confirm collision
     list<Bullets *> bullets_list; // variable to store every bullet fired, for use in locating
 
-<<<<<<< Updated upstream
     bullets_list = spaceship_in_game->getBullets();
     spaceship_loc = spaceship_in_game->getMov();
     int m=0;
     for (auto B : bullets_list)
-=======
-    bullets_list = spaceship_in_game->getBullets(); // obtaining list of bullets
-    spaceship_loc = spaceship_in_game->getMov(); // obtaining location of spaceship
-
-    for (auto B : bullets_list) // loop around every bullet that is currently on screen
->>>>>>> Stashed changes
     {
         bullet_loc = B->getLocation(); // get bullet location
         //cout << "bullet location X: " << bullet_loc.x << " Y: " << bullet_loc.y << endl;
@@ -64,7 +57,6 @@ void SpaceX::checkMouseClick(int x, int y, int Screen) // fucntion where objects
             isclicked = F->getIsClicked(); // get status of wether collision has happened or not
             getmov = F->getMov(); // get obstacles location
             // cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
-<<<<<<< Updated upstream
             
             //if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
             if (!isclicked)
@@ -76,26 +68,10 @@ void SpaceX::checkMouseClick(int x, int y, int Screen) // fucntion where objects
                     F->cutAnimation();
                     B->removeBullet();
                     totalScore.ScoreUpdate();
-<<<<<<< HEAD
                     // list<Bullets*>::iterator it4 = bullets_list.begin();
                     // advance(it4,m);
                     // bullets_list.erase(it4);
                     // delete B;
-=======
-                    list<Bullets*>::iterator it4 = bullets_list.begin();
-                    advance(it4,m);
-                    bullets_list.erase(it4);
-                    delete B;
-=======
-            if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
-            { // if the obstacles land in a square containing bullet, it will get destroyed and score increases
-                if (!isclicked)
-                {
-                    F->setIsClicked(); // status changed to collided
-                    F->cutAnimation(); // animation for explosion triggered
-                    totalScore.ScoreUpdate(); // score increases
->>>>>>> Stashed changes
->>>>>>> 126ddd9f928a3afcd3e4fe0cf4a7145a6b36d31d
                 }
 
                 cout << "collide" << endl;
@@ -118,39 +94,22 @@ void SpaceX::checkMouseClick(int x, int y, int Screen) // fucntion where objects
                     }
                 }
             }
-<<<<<<< Updated upstream
             //else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
             else if(SDL_HasIntersection(&bullet_loc,&getmov))
             {
                 E->setIsClicked();
                 E->animateEnemy();
                 totalScore.ScoreUpdate();
-<<<<<<< HEAD
                 B->removeBullet();
-=======
-=======
-            else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
-            { // if enemy get hit with bullet, destroy it and increase score
-                E->setIsClicked(); // change status to collided
-                E->animateEnemy(); // trigger animation for collision
-                totalScore.ScoreUpdate(); // increase score
->>>>>>> Stashed changes
->>>>>>> 126ddd9f928a3afcd3e4fe0cf4a7145a6b36d31d
             }
         }
         for (auto C : Collectibles) // finally, loop over all collectibles present on screen
         {
             isclicked = C->getIsClicked();
-<<<<<<< Updated upstream
             getmov = C->getMov();
             //if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
             if(SDL_HasIntersection(&spaceship_loc,&getmov))
             {
-=======
-            getmov = C->getMov(); // get movement and location of each collectible
-            if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
-            { // if the collectible happens to be near on over the spaceship, it is gained
->>>>>>> Stashed changes
                 if (!isclicked)
                 {
                     C->setIsClicked(); // change status to obtained
