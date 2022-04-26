@@ -12,5 +12,6 @@ public:
     Bullets(SDL_Renderer *, SDL_Texture *, SDL_Rect mov, int bullet_type);
     void draw(SDL_Renderer *, SDL_Texture *);
     void move();
+    SDL_Rect getLocation();
 };
 

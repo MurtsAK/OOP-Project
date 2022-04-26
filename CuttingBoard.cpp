@@ -36,58 +36,70 @@ void CuttingBoard::deleteObjects()
     }
 }
 
-// void CuttingBoard::checkMouseClick(int x, int y, int &Screen)
-// {
-//     SDL_Rect getmov;
-//     bool isclicked;
+void CuttingBoard::checkMouseClick(int x, int y,int Screen)
+{
+    SDL_Rect getmov;
+    SDL_Rect spaceship_loc;
+    SDL_Rect bullet_loc;
+    bool isclicked;
+    list<Bullets *> bullets_list;
 
-//     spaceship_in_game->setMov(x,y);
-//     for (auto F : Obstacles)
-//     {
-//         isclicked = F->getIsClicked();
-//         getmov = F->getMov();
-//         if (((y + 90) > getmov.y && (y - 90) < getmov.y) && ((x + 70) > getmov.x && (x - 70) < getmov.x))
-//         {
-//             if (!isclicked)
-//             {
-//                 F->setIsClicked();
-//                 F->cutAnimation();
-//                 totalScore.ScoreUpdate();
-//             }
-//         }
-//     }
-//     for (auto E : Enemies)
-//     {
-//         isclicked = E->getIsClicked();
-//         getmov = E->getMov();
-//         if (((y + 90) > getmov.y && (y - 90) < getmov.y) && ((x + 70) > getmov.x && (x - 70) < getmov.x))
-//         {
-//             if (!isclicked)
-//             {
-//                 E->setIsClicked();
-//                 totalHealth.updateHealth(E->LifeDeduct());
-//                 if (totalHealth.getHealth() <= 0)
-//                 {
-//                     Screen = 7;
-//                 }
-//             }
-//         }
-//     }
-//     for (auto C : Collectibles)
-//     {
-//         isclicked = C->getIsClicked();
-//         getmov = C->getMov();
-//         if (((y + 90) > getmov.y && (y - 90) < getmov.y) && ((x + 70) > getmov.x && (x - 70) < getmov.x))
-//         {
-//             if (!isclicked)
-//             {
-//                 C->setIsClicked();
-//                 C->removeCollectible();
-//                 totalHealth.updateHealth(C->healthIncrease());
-//             }
-//         }
-//     }
-// }
+    bullets_list = spaceship_in_game->getBullets();
+    spaceship_loc = spaceship_in_game->getMov();
+
+    for (auto B : bullets_list)
+    {
+        bullet_loc = B->getLocation();
+        cout << "bullet location X: " << bullet_loc.x << " Y: " << bullet_loc.y << endl;
+
+        for (auto F : Obstacles)
+        {
+            isclicked = F->getIsClicked();
+            getmov = F->getMov();
+            //cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
+            if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x - 10) < getmov.x)) && (((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x - 10) < getmov.x)))
+            {
+                if (!isclicked)
+                {
+                    F->setIsClicked();
+                    F->cutAnimation();
+                    totalScore.ScoreUpdate();
+                }
+            }
+        }
+        for (auto E : Enemies)
+        {
+            isclicked = E->getIsClicked();
+            getmov = E->getMov();
+            if ((bullet_loc.x == getmov.x) && (bullet_loc.y == getmov.y))
+            {
+                if (!isclicked)
+                {
+                    E->setIsClicked();
+                    totalHealth.updateHealth(E->LifeDeduct());
+                    if (totalHealth.getHealth() <= 0)
+                    {
+                        Screen = 7;
+                    }
+                }
+            }
+        }
+        for (auto C : Collectibles)
+        {
+            isclicked = C->getIsClicked();
+            getmov = C->getMov();
+            if ((bullet_loc.x == getmov.x) && (bullet_loc.y == getmov.y))
+            {
+                if (!isclicked)
+                {
+                    C->setIsClicked();
+                    C->removeCollectible();
+                    totalHealth.updateHealth(C->healthIncrease());
+                }
+            }
+        }
+    }
+}
 
 void CuttingBoard::displayScore()
 {
@@ -189,10 +201,10 @@ void CuttingBoard::drawObjects()
 void CuttingBoard::drawSpaceship()
 {
     bool Collision;
-    spaceship_in_game->draw(gRenderer,assets);
+    spaceship_in_game->draw(gRenderer, assets);
 }
 
-Spaceship* CuttingBoard::getSpaceship()
+Spaceship *CuttingBoard::getSpaceship()
 {
     return spaceship_in_game;
 }
@@ -224,7 +236,7 @@ void CuttingBoard::createObject()
     //     randomX = 1000;
     // }
 
-    std::cout << randomX << std::endl;
+    // std::cout << randomX << std::endl;
 
     SDL_Rect objectMov = {randomX, 10, 75, 90};
 

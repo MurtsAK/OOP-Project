@@ -19,7 +19,8 @@ void Kiwi::cutAnimation()
 {
     // src = {1001, 256, 142, 129};
     // src = {144, 10, 124, 102};
-    src = {830, 1165, 39, 39};
+    //src = {830, 1165, 39, 39};
+    src = {165, 804, 198, 198};
 }
 
 void Kiwi::dropObstacles()

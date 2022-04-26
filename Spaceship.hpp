@@ -27,4 +27,5 @@ public:
     bool getCollision();
     void setCollision();
     ~Spaceship();
+    list<Bullets*> getBullets();  
 };

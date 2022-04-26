@@ -93,3 +93,8 @@ Spaceship::~Spaceship()
     }
     bullets.clear();
 }
+
+list<Bullets*> Spaceship::getBullets()
+{
+    return bullets;
+}

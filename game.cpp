@@ -289,6 +289,7 @@ void Game::run()
             //     mousePressed = false;
             // }
             if (e.type == SDL_KEYDOWN){
+                CuttingBoard.checkMouseClick(xMouse,yMouse, Screen);
                 if (e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3))
                 {
                     gTexture = loadTexture("Mainmenu.png");
@@ -412,6 +413,7 @@ void Game::run()
         //     Screen = 6;
         //     gTexture = loadTexture("Spaceships.png");
         // }
+        }
         if (Screen == 6)
         {
             srand(time(0));
@@ -454,6 +456,5 @@ void Game::run()
             objectCreated = false;
             frameCounter = 0;
         }
-    }
 }
 }

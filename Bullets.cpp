@@ -9,6 +9,11 @@ void Bullets::move()
     moverB.y-=10;
 }
 
+SDL_Rect Bullets::getLocation()
+{
+    return moverB;
+}
+
 Bullets::Bullets(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int bullet_type):gRenderer(rend), assets(ast)
 {
     if (bullet_type == 1){
