@@ -39,6 +39,7 @@ public:
     void createObject();
     void createSpaceship(int spaceship);
     void drawSpaceship();
+    bool collisionDetection(SDL_Rect *,SDL_Rect *);
     Spaceship* getSpaceship();
     void checkMouseClick(int, int, int);
     void deleteObjects();

@@ -38,13 +38,13 @@ void BlueRing::animateEnemy()
     if (currentState == 0)
     {
         // src = {183, 42, 85, 156};
-        src = {830, 1283, 34, 34};
+        src = {1439, 438, 107, 121};
         currentState = 1;
     }
     else if (currentState == 1)
     {
         // src = {392, 835, 87, 154};
-        src = {830, 1283, 34, 34};
+        src = {1439, 438, 107, 121};
         currentState = 0;
     }
 }

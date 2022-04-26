@@ -18,7 +18,7 @@ void BlueAsteroid::cutAnimation()
 {
     // src = {998, 44, 139, 146};
     // src={116,144,50,50};
-    src = {686, 1120, 124, 102};
+    src = {1439, 438, 107, 121};
 }
 
 bool BlueAsteroid::outOfScreen()

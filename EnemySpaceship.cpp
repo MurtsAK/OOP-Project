@@ -48,13 +48,13 @@ void EnemySpaceship::animateEnemy()
     if (currentState == 0)
     {
         // src = {516, 19, 90, 200};
-        src = {552, 1254, 86, 80};
+        src = {1439, 438, 107, 121};
         currentState = 1;
     }
     else if (currentState == 1)
     {
         // src = {585, 800, 82, 200};
-        src = {552, 1254, 86, 80};
+        src = {1439, 438, 107, 121};
         currentState = 0;
     }
 }

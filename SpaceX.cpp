@@ -46,7 +46,7 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
 
     bullets_list = spaceship_in_game->getBullets();
     spaceship_loc = spaceship_in_game->getMov();
-
+    int m=0;
     for (auto B : bullets_list)
     {
         bullet_loc = B->getLocation();
@@ -57,15 +57,22 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
             isclicked = F->getIsClicked();
             getmov = F->getMov();
             // cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
-            if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+            
+            //if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+            if(collisionDetection(&bullet_loc,&getmov))
             {
                 if (!isclicked)
                 {
                     F->setIsClicked();
                     F->cutAnimation();
                     totalScore.ScoreUpdate();
+                    list<Bullets*>::iterator it4 = bullets_list.begin();
+                    advance(it4,m);
+                    bullets_list.erase(it4);
+                    delete B;
                 }
             }
+            m++;
         }
         for (auto E : Enemies)
         {
@@ -83,7 +90,8 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
                     }
                 }
             }
-            else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+            //else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
+            else if(collisionDetection(&bullet_loc,&getmov))
             {
                 E->setIsClicked();
                 E->animateEnemy();
@@ -94,7 +102,8 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
         {
             isclicked = C->getIsClicked();
             getmov = C->getMov();
-            if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
+            //if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
+            if(collisionDetection(&spaceship_loc,&getmov))
             {
                 if (!isclicked)
                 {
@@ -106,6 +115,26 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
         }
     }
 }
+
+
+bool SpaceX::collisionDetection(SDL_Rect *b, SDL_Rect *sp) {
+    if (b->x + b->w < sp->x - sp->w) return false;
+    if (b->x - b->w > sp->x + sp->w) return false;
+    if (b->y + b->h< sp->y - sp->h) return false;
+    if (b->y - b->h > sp->y + sp->h) return false;
+    return true;
+}
+
+//  void SpaceX::collisionDetection(SDL_Rect b, SDL_Rect sp) {
+//     for(int c=0; b.x; c++) {
+//         for(int r=0; r<b.y; r++) {
+//             var check = b[c][r];
+//             if(sp.x > check.x && sp.x < b.x+b.w && sp.y > check.y && sp.y < check.y+b.h) {
+//                 dy = -dy;
+//             }
+//         }
+//     }
+//}
 
 void SpaceX::displayScore()
 {

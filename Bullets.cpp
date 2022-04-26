@@ -13,6 +13,11 @@ SDL_Rect Bullets::getLocation()
     return moverB;
 }
 
+void Bullets::removeBullet()
+{
+
+}
+
 bool Bullets::outOfScreen(){
     if ((moverB.y+moverB.h)<0){
         return true;

@@ -5,7 +5,7 @@ class Bullets
 {
     SDL_Renderer *gRenderer;
     SDL_Texture *assets;
-    bool BulletCollision;
+    bool BulletCollision = false;
     SDL_Rect moverB,srcB;
 
 public:
@@ -13,6 +13,7 @@ public:
     void draw(SDL_Renderer *, SDL_Texture *);
     void operator ++ ();
     bool outOfScreen();
+    void removeBullet();
     SDL_Rect getLocation();
 };
 

@@ -25,7 +25,7 @@ bool Shuriken::outOfScreen()
 
 void Shuriken::cutAnimation()
 {
-    src = {728, 1254, 49, 49};
+    src = {1439, 438, 107, 121};
 }
 
 void Shuriken::dropObstacles()

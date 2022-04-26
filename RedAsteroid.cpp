@@ -25,7 +25,7 @@ bool RedAsteroid::outOfScreen()
 void RedAsteroid::cutAnimation()
 {
     // src = {1185, 613, 135, 99};
-    src = {552, 1120, 114, 114};
+    src = {1439, 438, 107, 121};
 }
 
 void RedAsteroid::dropObstacles()

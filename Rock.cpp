@@ -27,7 +27,7 @@ bool Rock::outOfScreen()
 void Rock::cutAnimation()
 {
     // src = {314, 261, 136, 129};
-    src = {658, 1254, 50, 50};
+    src = {1439, 438, 107, 121};
 }
 
 void Rock::dropObstacles()
