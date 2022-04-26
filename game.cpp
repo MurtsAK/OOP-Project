@@ -168,53 +168,55 @@ void Game::run() //this is the most important function of out game class which h
             {
 
                 SDL_GetMouseState(&xMouse, &yMouse);
-                std::cout << xMouse << " " << yMouse << std::endl;
-                if (xMouse >= 142 && xMouse <= 378 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
+                std::cout << xMouse << " " << yMouse << std::endl; //outputting our mouse clicks
+                if (xMouse >= 142 && xMouse <= 378 && yMouse >= 456 && yMouse <= 583 && Screen == 0) //checking when the about button is pressed by checking the coordinates
                 {
                     Screen = 1;
                     gTexture = loadTexture("ABOUT_Menu.png");
                 }
-                else if (xMouse >= 461 && xMouse <= 695 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
+                else if (xMouse >= 461 && xMouse <= 695 && yMouse >= 456 && yMouse <= 583 && Screen == 0) / //checking when the levels button is pressed by checking the coordinates
                 {
                     Screen = 2;
                     gTexture = loadTexture("Levels.png");
                 }
-                else if (xMouse >= 768 && xMouse <= 1006 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
+                else if (xMouse >= 768 && xMouse <= 1006 && yMouse >= 456 && yMouse <= 583 && Screen == 0)  //checking when the how to play button is pressed by checking the coordinates
                 {
                     Screen = 3;
                     gTexture = loadTexture("HowToPlay.png");
                 }
-                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && (Screen == 1 || Screen==2 || Screen == 3))
+                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && (Screen == 1 || Screen==2 || Screen == 3))  //checking when the console button on the top left is pressed by checking the coordinates
                 {
                         gTexture = loadTexture("MainMenu.png");
                         Screen = 0;
                 }
-                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && Screen==4)
+                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && Screen==4)  //checking when the console button is pressed by checking the coordinates while on screen 4
                 {
                         gTexture = loadTexture("Levels.png");
                         Screen = 2;
                 }
-                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && Screen==6)
+                else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && Screen==6) //checking when the console button is pressed by checking the coordinates while on screen 6
                 {
                         gTexture = loadTexture("Spaceships.png");
                         Screen = 4;
                 }
-                else if (xMouse>=406 && xMouse<= 750 && yMouse >= 35 && yMouse<= 210 && Screen ==2)
+                else if (xMouse>=406 && xMouse<= 750 && yMouse >= 35 && yMouse<= 210 && Screen ==2) //checking the coordinate for the respective level and then loading the spaceship screen
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
                 }
-                else if(xMouse>=406 && xMouse<= 750 && yMouse >= 250 && yMouse<= 425 && Screen ==2)
+                else if(xMouse>=406 && xMouse<= 750 && yMouse >= 250 && yMouse<= 425 && Screen ==2)  //checking the coordinate for the respective level and then loading the spaceship screen
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
                 }
-                else if(xMouse>=406 && xMouse<= 750 && yMouse >= 470 && yMouse<= 645 && Screen ==2)
+                else if(xMouse>=406 && xMouse<= 750 && yMouse >= 470 && yMouse<= 645 && Screen ==2) //checking the coordinate for the respective level and then loading the spaceship screen
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
                 }
-                else if(xMouse>=165 && xMouse<=400 && yMouse>=140 && yMouse<=300 && Screen == 4)
+
+                //the next set of else if statements would check that which spaceship is selected by checking the coordinate of each spaceship and then loading the main playing screen
+                else if(xMouse>=165 && xMouse<=400 && yMouse>=140 && yMouse<=300 && Screen == 4) 
                 {
                     //Spaceship 1
                     gTexture = loadTexture("SpaceX.png");
@@ -260,6 +262,7 @@ void Game::run() //this is the most important function of out game class which h
             }
             if (e.type == SDL_KEYDOWN){
                 SpaceX.checkMouseClick(xMouse,yMouse, Screen);
+                //implementing going back when the escape key is pressed
                 if (e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3))
                 {
                     gTexture = loadTexture("Mainmenu.png");
@@ -270,10 +273,13 @@ void Game::run() //this is the most important function of out game class which h
                     gTexture = loadTexture("Levels.png");
                     Screen = 2;
                 }
+                // pressing space fires the bullets
                 if (e.key.keysym.sym == SDLK_SPACE && Screen == 6)
                 {
                     SpaceX.getSpaceship()->createBullets();
                 }
+
+                //pressing left right arrow keys moves the spaceship
                 if (e.key.keysym.sym == SDLK_LEFT && Screen == 6)
                 {
                     SpaceX.getSpaceship()->moveLeft();
@@ -289,7 +295,7 @@ void Game::run() //this is the most important function of out game class which h
             srand(time(0));
             int randomWait;
             randomWait = rand() % 2;
-
+            //checking if there is any object created on the game screen
             if (objectCreated == false)
             {
                 // SDL_Delay(100);
@@ -297,7 +303,8 @@ void Game::run() //this is the most important function of out game class which h
                 objectCreated = true;
                 // SpaceX.artificialDelay();
             }
-        }
+        } 
+        //at the end displaying the game over screen 
         if (Screen == 7)
         {
             gTexture = loadTexture("GameOver.png");

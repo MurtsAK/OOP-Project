@@ -2,6 +2,7 @@
 
 Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spaceship) : gRenderer(rend), assets(ast)
 {
+    //getting spaceship and then displaying it
     mover = mov;
     spaceship_type = spaceship;
     // src = {10, 144, 86, 80};
@@ -50,12 +51,14 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 }
 
 void Spaceship::moveLeft(){
+    //first checking if the spaceship is still in the screen, then moving it  towards left 
     if(mover.x>1){
     mover.x -= 50;
     }
 }
 
 void Spaceship::moveRight(){
+    //first checking if the spaceship is still in the screen, then moving it towards right
     if(mover.x<1100){
     mover.x += 50;
     }
@@ -64,11 +67,13 @@ void Spaceship::moveRight(){
 void Spaceship::blastAnimation() {}
 
 void Spaceship::createBullets()
+//here we create bullets 
 {
     if (bullets.empty()){
         bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
     }else{
     if (restTime>5){
+        //bullets would be fired after a certain interval
         bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
         restTime=0;
     }
@@ -86,9 +91,9 @@ bool Spaceship::getCollision() {}
 
 void Spaceship::setCollision() {}
 
-Spaceship::~Spaceship()
+Spaceship::~Spaceship() //deleting spaceship
 {
-    for (auto B : bullets){
+    for (auto B : bullets){ //deleting bullets
         delete B;
     }
     bullets.clear();
