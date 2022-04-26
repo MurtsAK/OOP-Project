@@ -36,7 +36,11 @@ void SpaceX::deleteObjects()
     }
 }
 
+<<<<<<< Updated upstream
 void SpaceX::checkMouseClick(int x, int y, int Screen)
+=======
+void SpaceX::checkMouseClick(int x, int y, int &Screen)
+>>>>>>> Stashed changes
 {
     SDL_Rect getmov;
     SDL_Rect spaceship_loc;
