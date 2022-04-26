@@ -40,7 +40,7 @@ public:
     void createSpaceship(int spaceship);
     void drawSpaceship();
     Spaceship* getSpaceship();
-    void checkMouseClick(int, int, int &);
+    void checkMouseClick(int, int, int);
     void deleteObjects();
     // void dropObjects();
     // void fire();

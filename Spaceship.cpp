@@ -43,11 +43,18 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
         restTime+=1;
     }
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
+    int i=0;
     for (auto B :  bullets){
         if (!B->outOfScreen()){
             B->draw(gRenderer,assets);
             ++(*B); //operator overloading for bullets which moves them
+        }else{
+            list<Bullets*>::iterator it = bullets.begin();
+            advance(it,i);
+            bullets.erase(it);
+            delete B;
         }
+        i++;
     }
 }
 

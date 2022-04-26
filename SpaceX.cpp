@@ -36,11 +36,7 @@ void SpaceX::deleteObjects()
     }
 }
 
-<<<<<<< Updated upstream
 void SpaceX::checkMouseClick(int x, int y, int Screen)
-=======
-void SpaceX::checkMouseClick(int x, int y, int &Screen)
->>>>>>> Stashed changes
 {
     SDL_Rect getmov;
     SDL_Rect spaceship_loc;
@@ -185,6 +181,7 @@ void SpaceX::displayHealth()
 void SpaceX::drawObjects()
 {
     bool isclicked;
+    int i=0;int j=0;int k=0;
     // totalHealth.displayHealth(gRenderer, assets);
     for (auto E : Enemies)
     {
@@ -196,7 +193,13 @@ void SpaceX::drawObjects()
             {
                 E->animateEnemy();
             }
+        }else{
+            list<Enemy*>::iterator it1 = Enemies.begin();
+            advance(it1,i);
+            Enemies.erase(it1);
+            delete E;
         }
+        i++;
     }
 
     for (auto F : Obstacles)
@@ -204,6 +207,11 @@ void SpaceX::drawObjects()
         if (!F->outOfScreen()){
             F->draw(gRenderer, assets);
             F->dropObstacles();
+        }else{
+            list<Obstacle*>::iterator it2 = Obstacles.begin();
+            advance(it2,j);
+            Obstacles.erase(it2);
+            delete F;
         }
     }
     for (auto C : Collectibles)
@@ -211,6 +219,11 @@ void SpaceX::drawObjects()
         if (!C->outOfScreen()){
             C->draw(gRenderer, assets);
             C->dropCollectibles();
+        }else{
+            list<Collectible*>::iterator it3 = Collectibles.begin();
+            advance(it3,k);
+            Collectibles.erase(it3);
+            delete C;
         }
        
     }
