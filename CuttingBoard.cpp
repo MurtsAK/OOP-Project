@@ -36,7 +36,7 @@ void CuttingBoard::deleteObjects()
     }
 }
 
-void CuttingBoard::checkMouseClick(int x, int y,int Screen)
+void CuttingBoard::checkMouseClick(int x, int y, int Screen)
 {
     SDL_Rect getmov;
     SDL_Rect spaceship_loc;
@@ -56,8 +56,8 @@ void CuttingBoard::checkMouseClick(int x, int y,int Screen)
         {
             isclicked = F->getIsClicked();
             getmov = F->getMov();
-            //cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
-            if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x - 10) < getmov.x)) && (((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x - 10) < getmov.x)))
+            // cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
+            if ((((bullet_loc.x + 10) > getmov.x)) && (((bullet_loc.y + 10) > getmov.y)))
             {
                 if (!isclicked)
                 {
@@ -71,7 +71,7 @@ void CuttingBoard::checkMouseClick(int x, int y,int Screen)
         {
             isclicked = E->getIsClicked();
             getmov = E->getMov();
-            if ((bullet_loc.x == getmov.x) && (bullet_loc.y == getmov.y))
+            if (spaceship_loc.x == getmov.x)
             {
                 if (!isclicked)
                 {
@@ -83,12 +83,21 @@ void CuttingBoard::checkMouseClick(int x, int y,int Screen)
                     }
                 }
             }
+            else if ((((bullet_loc.x + 10) > getmov.x)) && (((bullet_loc.y + 10) > getmov.y)))
+            {
+                if (!isclicked)
+                {
+                    E->setIsClicked();
+                    E->animateEnemy();
+                    totalScore.ScoreUpdate();
+                }
+            }
         }
         for (auto C : Collectibles)
         {
             isclicked = C->getIsClicked();
             getmov = C->getMov();
-            if ((bullet_loc.x == getmov.x) && (bullet_loc.y == getmov.y))
+            if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x - 10) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y - 10) < getmov.y)))
             {
                 if (!isclicked)
                 {

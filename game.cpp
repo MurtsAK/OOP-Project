@@ -6,7 +6,6 @@
 #include "HealthPoints.hpp"
 #include "Spaceship.hpp"
 #include <time.h>
-#include 
 bool Game::init()
 {
     // Initialization flag
@@ -223,8 +222,6 @@ void Game::run()
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
-                    Spaceship::~Spaceship()
-                    CuttingBoard::~CuttingBoard()
                     
                 }
                 else if(xMouse>=406 && xMouse<= 750 && yMouse >= 470 && yMouse<= 645 && Screen ==2)
