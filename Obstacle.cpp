@@ -17,3 +17,5 @@ SDL_Rect Obstacle::getMov(
 bool Obstacle::getIsClicked() {}
 
 void Obstacle::setIsClicked() {}
+
+bool Obstacle::outOfScreen() {}

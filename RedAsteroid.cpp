@@ -13,6 +13,15 @@ void RedAsteroid::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
 }
 
+bool RedAsteroid::outOfScreen()
+{
+    if (mover.y>700)
+    {
+        return true;
+    }
+    return false;
+}
+
 void RedAsteroid::cutAnimation()
 {
     // src = {1185, 613, 135, 99};

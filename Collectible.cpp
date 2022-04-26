@@ -17,3 +17,5 @@ void Collectible::removeCollectible() {}
 bool Collectible::getIsClicked() {}
 
 void Collectible::setIsClicked() {}
+
+bool Collectible::outOfScreen() {}
