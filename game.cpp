@@ -222,6 +222,10 @@ void Game::run()
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
+<<<<<<< Updated upstream
+=======
+                    
+>>>>>>> Stashed changes
                 }
                 else if(xMouse>=406 && xMouse<= 750 && yMouse >= 470 && yMouse<= 645 && Screen ==2)
                 {
