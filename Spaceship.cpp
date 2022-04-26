@@ -45,19 +45,19 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
     for (auto B :  bullets){
         B->draw(gRenderer,assets);
-        B->move();
+        ++(*B); //operator overloading for bullets which moves them
     }
 }
 
-void Spaceship::moveLeft(){
+void Spaceship::operator ++ (){
     if(mover.x>1){
-    mover.x -= 50;
+        mover.x -= 50;
     }
 }
 
-void Spaceship::moveRight(){
+void Spaceship::operator ++ (int y){
     if(mover.x<1100){
-    mover.x += 50;
+        mover.x += 50;
     }
 }
 
