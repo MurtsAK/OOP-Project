@@ -59,18 +59,22 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
             // cout << "obstacle location X: " << getmov.x << " Y: " << getmov.y << endl;
             
             //if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
-            if(collisionDetection(&bullet_loc,&getmov))
+            if (!isclicked)
             {
-                if (!isclicked)
-                {
+            if(SDL_HasIntersection(&bullet_loc,&getmov))
+            {
+                    cout << "inside isclicked" << endl;
                     F->setIsClicked();
                     F->cutAnimation();
+                    B->removeBullet();
                     totalScore.ScoreUpdate();
-                    list<Bullets*>::iterator it4 = bullets_list.begin();
-                    advance(it4,m);
-                    bullets_list.erase(it4);
-                    delete B;
+                    // list<Bullets*>::iterator it4 = bullets_list.begin();
+                    // advance(it4,m);
+                    // bullets_list.erase(it4);
+                    // delete B;
                 }
+
+                cout << "collide" << endl;
             }
             m++;
         }
@@ -91,11 +95,12 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
                 }
             }
             //else if ((((bullet_loc.x + 10) > getmov.x) && ((bullet_loc.x) < getmov.x)) && (((bullet_loc.y + 10) > getmov.y) && ((bullet_loc.y) < getmov.y)))
-            else if(collisionDetection(&bullet_loc,&getmov))
+            else if(SDL_HasIntersection(&bullet_loc,&getmov))
             {
                 E->setIsClicked();
                 E->animateEnemy();
                 totalScore.ScoreUpdate();
+                B->removeBullet();
             }
         }
         for (auto C : Collectibles)
@@ -103,7 +108,7 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
             isclicked = C->getIsClicked();
             getmov = C->getMov();
             //if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
-            if(collisionDetection(&spaceship_loc,&getmov))
+            if(SDL_HasIntersection(&spaceship_loc,&getmov))
             {
                 if (!isclicked)
                 {
@@ -116,14 +121,6 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
     }
 }
 
-
-bool SpaceX::collisionDetection(SDL_Rect *b, SDL_Rect *sp) {
-    if (b->x + b->w < sp->x - sp->w) return false;
-    if (b->x - b->w > sp->x + sp->w) return false;
-    if (b->y + b->h< sp->y - sp->h) return false;
-    if (b->y - b->h > sp->y + sp->h) return false;
-    return true;
-}
 
 //  void SpaceX::collisionDetection(SDL_Rect b, SDL_Rect sp) {
 //     for(int c=0; b.x; c++) {

@@ -1,11 +1,11 @@
 #include "Bullets.hpp"
 
 void Bullets::draw(SDL_Renderer *rend, SDL_Texture *ast){
-    SDL_RenderCopy(gRenderer, assets, &srcB, &moverB);
+        SDL_RenderCopy(gRenderer, assets, &srcB, &moverB);
 }
 
 void Bullets::operator ++(){
-    moverB.y-=10;
+    moverB.y-=20;
 }
 
 SDL_Rect Bullets::getLocation()
@@ -15,7 +15,7 @@ SDL_Rect Bullets::getLocation()
 
 void Bullets::removeBullet()
 {
-
+    moverB.h=0;moverB.w=0;
 }
 
 bool Bullets::outOfScreen(){
