@@ -13,7 +13,12 @@ void Diamond::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
     // Body is drawn and moves horizontal direction at the speed of 4 units
     // Collectible::draw();
-    SDL_RenderCopy(gRenderer, assets, &src, &mover);
+    Collectible::draw(gRenderer,assets,src,mover);
+}
+
+SDL_Rect Diamond::getSrc()
+{
+    return src;
 }
 
 bool Diamond::outOfScreen()

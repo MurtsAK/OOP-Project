@@ -11,7 +11,11 @@ BlueAsteroid::BlueAsteroid(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) :
 void BlueAsteroid::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
     // Body is drawn and moves horizontal direction at the speed of 4 units
-    SDL_RenderCopy(gRenderer, assets, &src, &mover);
+    Obstacle::draw(gRenderer,assets,src,mover);
+}
+
+SDL_Rect BlueAsteroid::getSrc(){
+    return src;
 }
 
 void BlueAsteroid::cutAnimation()

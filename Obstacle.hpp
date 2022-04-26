@@ -11,7 +11,8 @@ class Obstacle
 public:
     Obstacle(SDL_Renderer *, SDL_Texture *);
     virtual SDL_Rect getMov();
-    virtual void draw(SDL_Renderer *, SDL_Texture *);
+    virtual SDL_Rect getSrc();
+    virtual void draw(SDL_Renderer *, SDL_Texture *, SDL_Rect, SDL_Rect);
     virtual void cutAnimation();
     virtual void dropObstacles();
     virtual bool getIsClicked();

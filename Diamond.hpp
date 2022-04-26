@@ -15,4 +15,5 @@ public:
     void setIsClicked();
     bool outOfScreen();
     SDL_Rect getMov();
+    SDL_Rect getSrc();
 };

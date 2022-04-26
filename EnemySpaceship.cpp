@@ -12,7 +12,12 @@ EnemySpaceship::EnemySpaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mo
 void EnemySpaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
     // Body is drawn and moves horizontal direction at the speed of 4 units
-    SDL_RenderCopy(gRenderer, assets, &src, &mover);
+    Enemy::draw(gRenderer,assets,src,mover);
+}
+
+SDL_Rect EnemySpaceship::getSrc()
+{
+    return src;
 }
 
 bool EnemySpaceship::outOfScreen()

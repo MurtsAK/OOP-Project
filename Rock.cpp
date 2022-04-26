@@ -12,7 +12,7 @@ Rock::Rock(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, 
 void Rock::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
     // Body is drawn and moves horizontal direction at the speed of 4 units
-    SDL_RenderCopy(gRenderer, assets, &src, &mover);
+    Obstacle::draw(gRenderer,assets,src,mover);
 }
 
 bool Rock::outOfScreen()
@@ -51,4 +51,9 @@ bool Rock::getIsClicked()
 void Rock::setIsClicked()
 {
     isClicked = true;
+}
+
+SDL_Rect Rock::getSrc()
+{
+    return src;
 }

@@ -242,7 +242,7 @@ void SpaceX::drawObjects()
     {
         if (!E->outOfScreen())
         {
-            E->draw(gRenderer, assets); // draw enemies on screen
+            E->draw(gRenderer, assets, E->getSrc() , E->getMov()); // draw enemies on screen
             E->dropEnemies();           // drop them from the top
             isclicked = E->getIsClicked();
             if (isclicked)
@@ -264,7 +264,7 @@ void SpaceX::drawObjects()
     {
         if (!F->outOfScreen())
         {
-            F->draw(gRenderer, assets);
+            F->draw(gRenderer, assets,F->getSrc(),F->getMov());
             F->dropObstacles();
         }
         else
@@ -279,7 +279,7 @@ void SpaceX::drawObjects()
     {
         if (!C->outOfScreen())
         {
-            C->draw(gRenderer, assets);
+            C->draw(gRenderer, assets,C->getSrc(),C->getMov());
             C->dropCollectibles();
         }
         else

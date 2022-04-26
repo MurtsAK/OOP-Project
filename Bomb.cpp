@@ -12,7 +12,11 @@ Bomb::Bomb(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Enemy(rend, ast
 void Bomb::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
     // Body is drawn and moves horizontal direction at the speed of 4 units
-    SDL_RenderCopy(gRenderer, assets, &src, &mover);
+    Enemy::draw(gRenderer,assets,src,mover);
+}
+
+SDL_Rect Bomb::getSrc(){
+    return src;
 }
 
 bool Bomb::outOfScreen()
