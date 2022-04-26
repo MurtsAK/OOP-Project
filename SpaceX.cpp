@@ -329,21 +329,6 @@ SpaceX::SpaceX(SDL_Renderer *renderer, SDL_Texture *asst, Score &totalScore, Hea
 
 SpaceX::~SpaceX()
 {
-    // for (auto B : Bombs)
-    // {
-    //     delete B;
-    // }
-    // for (auto F : EnemeySpaceshipes)
-    // {
-    //     delete F;
-    // }
-    // for (auto Rf : BlueRings)
-    // {
-    //     delete Rf;
-    // }
-    // EnemeySpaceshipes.clear();
-    // Bombs.clear();
-    // BlueRings.clear();
     for (auto E : Enemies)
     {
         delete E;

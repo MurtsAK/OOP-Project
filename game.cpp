@@ -169,8 +169,6 @@ void Game::run() //this is the most important function of out game class which h
 
                 SDL_GetMouseState(&xMouse, &yMouse);
                 std::cout << xMouse << " " << yMouse << std::endl;
-                // SpaceX.createObject(xMouse, yMouse);
-                // MainMenu.createObject(xMouse, yMouse);
                 if (xMouse >= 142 && xMouse <= 378 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
                 {
                     Screen = 1;
@@ -180,22 +178,12 @@ void Game::run() //this is the most important function of out game class which h
                 {
                     Screen = 2;
                     gTexture = loadTexture("Levels.png");
-                    // if (Screen == 2 && xMouse >= 405 && xMouse <= 748 && yMouse >= 36 && yMouse <= 641)
-                    // {
-                    //     Screen = 0;
-                    //     gTexture = loadTexture("Spaceships.png");
-                    // }
                 }
                 else if (xMouse >= 768 && xMouse <= 1006 && yMouse >= 456 && yMouse <= 583 && Screen == 0)
                 {
                     Screen = 3;
                     gTexture = loadTexture("HowToPlay.png");
                 }
-
-                // if (Screen == 2 && xMouse >= 405 && xMouse <= 748 && yMouse >= 36 && yMouse <= 641 ){
-                //     Screen =5;
-                //     gTexture =loadTexture("GameBoard1.png");
-                // }
                 else if (xMouse >= 19 && xMouse <= 67 && yMouse >= 26 && yMouse <= 64 && (Screen == 1 || Screen==2 || Screen == 3))
                 {
                         gTexture = loadTexture("MainMenu.png");
@@ -270,18 +258,6 @@ void Game::run() //this is the most important function of out game class which h
                 }
 
             }
-            // if (Screen == 2 and xMouse >= 404 && xMouse <= 752 && yMouse >= 36 && yMouse <= 645)
-            // {
-            //     gTexture = loadTexture("spaceships.png");
-            //     Screen = 6;
-            // }
-
-            // if (Screen ==6 and )
-
-            // if (e.type == SDL_MOUSEBUTTONUP)
-            // {
-            //     mousePressed = false;
-            // }
             if (e.type == SDL_KEYDOWN){
                 SpaceX.checkMouseClick(xMouse,yMouse, Screen);
                 if (e.key.keysym.sym == SDLK_ESCAPE && (Screen == 1 || Screen == 2 || Screen == 3))
@@ -307,106 +283,6 @@ void Game::run() //this is the most important function of out game class which h
                     SpaceX.getSpaceship()->moveRight();
                 }
             }
-
-            // if (e.type == SDL_MOUSEMOTION && Screen == 6)
-            // {
-            //     SDL_GetMouseState(&xMouse, &yMouse);
-            //     SpaceX.checkMouseClick(xMouse, yMouse, Screen);
-            //     // if (mousePressed == true)
-            //     // {
-            //     //     SDL_GetMouseState(&xMouse, &yMouse);
-            //     //     SpaceX.checkMouseClick(xMouse, yMouse);
-            //     // }
-            // }
-            // if (Screen == 2 and xMouse >= 404 && xMouse <= 752 && yMouse >= 36 && yMouse <= 645)
-            // {
-            //     Screen = 4;
-            //     // gTexture = loadTexture("SpaceX.png");
-            //     gTexture = loadTexture("SpaceX.png");
-            // }
-            // else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN && Screen == 4)
-            // {
-            //     Screen = 5;
-            //     gTexture = loadTexture("SpaceX1.png");
-            // }
-            // if (Screen == 4)
-            // {
-
-            //     if (e.type == SDL_KEYDOWN)
-            //     {
-
-            //         if (e.key.keysym.sym == SDLK_1)
-            //         // if (xMouse >= 169 && xMouse <= 393 && yMouse >= 144 && yMouse <= 295)
-            //         {
-            //             // Spaceship 1
-            //             Screen = 6;
-            //             gTexture = loadTexture("SpaceX.png");
-            //             SpaceX.createSpaceship(1);
-            //         }
-            //         if (e.key.keysym.sym == SDLK_2)
-            //         // if (xMouse >= 211 && xMouse <= 394 && yMouse >= 373 && yMouse <= 543)
-            //         {
-            //             // Spaceship 2
-            //             Screen = 6;
-            //             gTexture = loadTexture("SpaceX.png");
-            //             SpaceX.createSpaceship(2);
-            //         }
-            //         if (e.key.keysym.sym == SDLK_3)
-            //         // if (xMouse >= 760 && xMouse <= 980 && yMouse >= 133 && yMouse <= 287)
-            //         {
-            //             // Spaceship 3
-            //             Screen = 6;
-            //             gTexture = loadTexture("SpaceX.png");
-            //             SpaceX.createSpaceship(3);
-            //         }
-            //         // if (xMouse >= 754 && xMouse <= 940 && yMouse >= 330 && yMouse <= 556)
-            //         if (e.key.keysym.sym == SDLK_4)
-            //         {
-            //             // Spaceship 4
-            //             Screen = 6;
-            //             gTexture = loadTexture("SpaceX.png");
-            //             SpaceX.createSpaceship(4);
-            //         }
-            //         // if (xMouse >= 493 && xMouse <= 660 && yMouse >= 181 && yMouse <= 398)
-            //         if (e.key.keysym.sym == SDLK_5)
-            //         {
-            //             // Spaceship 5
-            //             Screen = 6;
-            //             gTexture = loadTexture("SpaceX.png");
-            //             SpaceX.createSpaceship(5);
-            //         }
-            //         if (e.key.keysym.sym == SDLK_6)
-            //         // if (xMouse >= 480 && xMouse <= 688 && yMouse >= 443 && yMouse <= 563)
-            //         {
-            //             // Spaceship 6
-            //             Screen = 6;
-            //             gTexture = loadTexture("SpaceX.png");
-            //             SpaceX.createSpaceship(6);
-            //         }
-                    // if (e.key.keysym.sym == SDLK_1)
-                    // else if (xMouse >= 480 && xMouse <= 688 && yMouse >= 443 && yMouse <= 563)
-                    // {
-                    //     // Spaceship 6
-                    //     Screen = 5;
-                    //     gTexture = loadTexture("SpaceX.png");
-                    //     SpaceX.createSpaceship(6);
-                    // }
-            //     }
-            // }
-
-            // okay wala
-            // if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN && Screen == 5)
-            // {
-            //     Screen = 6;
-            //     gTexture = loadTexture("SpaceX.png");
-            // }
-            // BattleField.fire();
-        //}
-        // if (Screen == 2 and xMouse >= 404 && xMouse <= 752 && yMouse >= 36 && yMouse <= 645)
-        // {
-        //     Screen = 6;
-        //     gTexture = loadTexture("Spaceships.png");
-        // }
         }
         if (Screen == 6)
         {
