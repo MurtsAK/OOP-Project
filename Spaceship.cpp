@@ -44,10 +44,8 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     }
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
     for (auto B :  bullets){
-        if (!B->outOfScreen()){
-            B->draw(gRenderer,assets);
-            ++(*B); //operator overloading for bullets which moves them
-        }
+        B->draw(gRenderer,assets);
+        ++(*B); //operator overloading for bullets which moves them
     }
 }
 

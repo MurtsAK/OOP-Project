@@ -12,7 +12,6 @@ public:
     Bullets(SDL_Renderer *, SDL_Texture *, SDL_Rect mov, int bullet_type);
     void draw(SDL_Renderer *, SDL_Texture *);
     void operator ++ ();
-    bool outOfScreen();
     SDL_Rect getLocation();
 };
 

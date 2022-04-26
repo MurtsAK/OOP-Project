@@ -16,5 +16,4 @@ public:
     virtual void dropObstacles();
     virtual bool getIsClicked();
     virtual void setIsClicked();
-    virtual bool outOfScreen();
 };

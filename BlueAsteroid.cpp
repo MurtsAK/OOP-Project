@@ -21,14 +21,6 @@ void BlueAsteroid::cutAnimation()
     src = {686, 1120, 124, 102};
 }
 
-bool BlueAsteroid::outOfScreen()
-{
-    if (mover.y>700)
-    {
-        return true;
-    }
-    return false;
-}
 void BlueAsteroid::dropObstacles()
 {
     srand(time(0));

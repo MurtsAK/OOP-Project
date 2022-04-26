@@ -19,5 +19,4 @@ public:
     virtual SDL_Rect getMov();
     virtual bool getIsClicked();
     virtual void setIsClicked();
-    virtual bool outOfScreen();
 };

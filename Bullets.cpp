@@ -13,14 +13,6 @@ SDL_Rect Bullets::getLocation()
     return moverB;
 }
 
-bool Bullets::outOfScreen(){
-    if ((moverB.y+moverB.h)<0){
-        return true;
-    }else{
-        return false;
-    }
-}
-
 Bullets::Bullets(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int bullet_type):gRenderer(rend), assets(ast)
 {
     if (bullet_type == 1){

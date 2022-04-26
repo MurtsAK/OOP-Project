@@ -3,7 +3,7 @@
 #include "Obstacle.hpp"
 #include "Bomb.hpp"
 #include "BlueRing.hpp"
-#include "EnemySpaceship.hpp"
+#include "EnemeySpaceship.hpp"
 #include "RedAsteroid.hpp"
 #include "YellowEnemy.hpp"
 #include "BlueAsteroid.hpp"

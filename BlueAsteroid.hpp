@@ -12,6 +12,5 @@ public:
     void dropObstacles();
     bool getIsClicked();
     void setIsClicked();
-    bool outOfScreen();
     SDL_Rect getMov();
 };

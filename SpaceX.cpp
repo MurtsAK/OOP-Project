@@ -36,11 +36,15 @@ void SpaceX::deleteObjects()
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 void SpaceX::checkMouseClick(int x, int y, int Screen)
 =======
 void SpaceX::checkMouseClick(int x, int y, int &Screen)
 >>>>>>> Stashed changes
+=======
+void SpaceX::checkMouseClick(int x, int y, int& Screen)
+>>>>>>> parent of b55f57e (objects are not drawn once they're out of screen)
 {
     SDL_Rect getmov;
     SDL_Rect spaceship_loc;
@@ -188,31 +192,24 @@ void SpaceX::drawObjects()
     // totalHealth.displayHealth(gRenderer, assets);
     for (auto E : Enemies)
     {
-        if (!E->outOfScreen()){
-            E->draw(gRenderer, assets);
-            E->dropEnemies();
-            isclicked = E->getIsClicked();
-            if (isclicked)
-            {
-                E->animateEnemy();
-            }
+        E->draw(gRenderer, assets);
+        E->dropEnemies();
+        isclicked = E->getIsClicked();
+        if (isclicked)
+        {
+            E->animateEnemy();
         }
     }
 
     for (auto F : Obstacles)
     {
-        if (!F->outOfScreen()){
-            F->draw(gRenderer, assets);
-            F->dropObstacles();
-        }
+        F->draw(gRenderer, assets);
+        F->dropObstacles();
     }
     for (auto C : Collectibles)
     {
-        if (!C->outOfScreen()){
-            C->draw(gRenderer, assets);
-            C->dropCollectibles();
-        }
-       
+        C->draw(gRenderer, assets);
+        C->dropCollectibles();
     }
 }
 void SpaceX::drawSpaceship()
@@ -302,7 +299,7 @@ void SpaceX::createObject()
         }
         else
         {
-            Enemies.push_back(new EnemySpaceship(gRenderer, assets, objectMov));
+            Enemies.push_back(new EnemeySpaceship(gRenderer, assets, objectMov));
             // artificialDelay();
         }
     }
@@ -325,7 +322,7 @@ void SpaceX::createObject()
 // Turretmov and Bodymov creates rectangular frames at specific x,y values for each individual object
 //  Turretmov have an increment of 40 in x coordinate in order to place the turret on the right edge of tank body
 
-// Enemies.push_back(new EnemySpaceship(gRenderer, assets, EnemyMov));
+// Enemies.push_back(new EnemeySpaceship(gRenderer, assets, EnemyMov));
 // Using the two objects TankBody and TankTurret, a new Tank is created dynamically everytime a mouse is clicked
 void SpaceX::createSpaceship(int spaceship)
 {
@@ -344,7 +341,7 @@ SpaceX::~SpaceX()
     // {
     //     delete B;
     // }
-    // for (auto F : EnemySpaceshipes)
+    // for (auto F : EnemeySpaceshipes)
     // {
     //     delete F;
     // }
@@ -352,7 +349,7 @@ SpaceX::~SpaceX()
     // {
     //     delete Rf;
     // }
-    // EnemySpaceshipes.clear();
+    // EnemeySpaceshipes.clear();
     // Bombs.clear();
     // BlueRings.clear();
     for (auto E : Enemies)

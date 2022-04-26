@@ -49,15 +49,6 @@ void BlueRing::animateEnemy()
     }
 }
 
-bool BlueRing::outOfScreen()
-{
-    if (mover.y>700)
-    {
-        return true;
-    }
-    return false;
-}
-
 bool BlueRing::getIsClicked()
 {
     return isClicked;

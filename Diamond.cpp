@@ -16,15 +16,6 @@ void Diamond::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
 }
 
-bool Diamond::outOfScreen()
-{
-    if (mover.y>700)
-    {
-        return true;
-    }
-    return false;
-}
-
 void Diamond::dropCollectibles()
 {
     // Collectible::dropCollectibles();

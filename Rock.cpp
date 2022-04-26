@@ -15,15 +15,6 @@ void Rock::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
 }
 
-bool Rock::outOfScreen()
-{
-    if (mover.y>700)
-    {
-        return true;
-    }
-    return false;
-}
-
 void Rock::cutAnimation()
 {
     // src = {314, 261, 136, 129};
