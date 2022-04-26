@@ -36,7 +36,7 @@ void SpaceX::deleteObjects()
     }
 }
 
-void SpaceX::checkMouseClick(int x, int y, int Screen)
+void SpaceX::checkMouseClick(int x, int y, int& Screen)
 {
     SDL_Rect getmov;
     SDL_Rect spaceship_loc;
@@ -71,7 +71,7 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
         {
             isclicked = E->getIsClicked();
             getmov = E->getMov();
-            if (spaceship_loc.y > getmov.y)
+            if (spaceship_loc.y < getmov.y)
             {
                 if (!isclicked)
                 {
@@ -94,7 +94,7 @@ void SpaceX::checkMouseClick(int x, int y, int Screen)
         {
             isclicked = C->getIsClicked();
             getmov = C->getMov();
-            if ((spaceship_loc.x == getmov.x) && (spaceship_loc.y == getmov.y))
+            if ((((spaceship_loc.x + 10) > getmov.x) && ((spaceship_loc.x) < getmov.x)) && (((spaceship_loc.y + 10) > getmov.y) && ((spaceship_loc.y) < getmov.y)))
             {
                 if (!isclicked)
                 {
@@ -329,6 +329,21 @@ SpaceX::SpaceX(SDL_Renderer *renderer, SDL_Texture *asst, Score &totalScore, Hea
 
 SpaceX::~SpaceX()
 {
+    // for (auto B : Bombs)
+    // {
+    //     delete B;
+    // }
+    // for (auto F : EnemeySpaceshipes)
+    // {
+    //     delete F;
+    // }
+    // for (auto Rf : BlueRings)
+    // {
+    //     delete Rf;
+    // }
+    // EnemeySpaceshipes.clear();
+    // Bombs.clear();
+    // BlueRings.clear();
     for (auto E : Enemies)
     {
         delete E;
@@ -347,4 +362,4 @@ SpaceX::~SpaceX()
     Obstacles.clear();
     Enemies.clear();
     std::cout << "Objects deleted";
-}
+}   
