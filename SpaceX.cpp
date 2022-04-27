@@ -120,7 +120,7 @@ void SpaceX::checkMouseClick(int x, int y, int &Screen) // fucntion where object
                     {
                         C->setIsClicked();      // change status to obtained
                         C->removeCollectible(); // remove collectible from screen
-                        totalHealth.updateGems(1);
+                        totalHealth.updateGems();
                     }
                     else
                     {

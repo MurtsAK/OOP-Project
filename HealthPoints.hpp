@@ -5,13 +5,13 @@ class HealthPoints
 {
     // SDL_Rect src, mover;
     int totalHealth;
-    int totalGems;
+    int totalGems = 0;
 
 public:
     HealthPoints(int);
     void updateHealth(int);
     int getHealth();
     int getGems();
-    void updateGems(int);
+    void updateGems();
     // void displayHealth(SDL_Renderer *gRenderer, SDL_Texture *assets);
 };

@@ -19,7 +19,7 @@ void HealthPoints::updateHealth(int h)
     }
 }
 
-void HealthPoints::updateGems(int g)
+void HealthPoints::updateGems()
 {
     totalGems += 1;
 }
