@@ -136,7 +136,9 @@ SDL_Texture *Game::loadTexture(std::string path)
 }
 
 void Game::run() //this is the most important function of out game class which helps in the dynamicity and running of our game
+
 {
+    int level=0;
     bool quit = false;
     SDL_Event e;
     static int Screen = 0;
@@ -203,16 +205,19 @@ void Game::run() //this is the most important function of out game class which h
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
+                    level=1;
                 }
                 else if(xMouse>=406 && xMouse<= 750 && yMouse >= 250 && yMouse<= 425 && Screen ==2)  //checking the coordinate for the respective level and then loading the spaceship screen
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
+                    level=2;
                 }
                 else if(xMouse>=406 && xMouse<= 750 && yMouse >= 470 && yMouse<= 645 && Screen ==2) //checking the coordinate for the respective level and then loading the spaceship screen
                 {
                     gTexture = loadTexture("Spaceships.png");
                     Screen = 4;
+                    level=3;
                 }
 
                 //the next set of else if statements would check that which spaceship is selected by checking the coordinate of each spaceship and then loading the main playing screen
@@ -328,7 +333,19 @@ void Game::run() //this is the most important function of out game class which h
         //****************************************************************
         SDL_RenderPresent(gRenderer); // displays the updated renderer
 
-        SDL_Delay(100); // causes sdl engine to delay for specified miliseconds
+        if(level==1){
+            SDL_Delay(150);
+        }
+
+        else if(level==2){
+            SDL_Delay(100);
+        }
+
+        else if(level==3){
+            SDL_Delay(50);
+        }
+
+        //SDL_Delay(100); // causes sdl engine to delay for specified miliseconds
         frameCounter += 1;
         if (frameCounter == 15)
         {

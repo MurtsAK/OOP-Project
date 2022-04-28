@@ -2,7 +2,7 @@
 // jelly type
 Shuriken::Shuriken(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
-    // Tank Body's location in asset.png
+    // Object's location in asset.png
     mover = mov;
     // src = {830, 392, 130, 154};
     src = {728, 1254, 49, 49};
@@ -10,16 +10,16 @@ Shuriken::Shuriken(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacl
 
 void Shuriken::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
-    // Body is drawn and moves horizontal direction at the speed of 4 units
+    // Body is drawn 
     Obstacle::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect Shuriken::getSrc()
+SDL_Rect Shuriken::getSrc() //getting coordinates
 {
     return src;
 }
 
-bool Shuriken::outOfScreen()
+bool Shuriken::outOfScreen() //checking if it is still in screen
 {
     if (mover.y>700)
     {
@@ -28,12 +28,12 @@ bool Shuriken::outOfScreen()
     return false;
 }
 
-void Shuriken::cutAnimation()
+void Shuriken::cutAnimation() //animation when collided
 {
     src = {1439, 438, 107, 121};
 }
 
-void Shuriken::dropObstacles()
+void Shuriken::dropObstacles() //dropping at a random speed
 {
     srand(time(0));
     int randomY;
@@ -41,7 +41,7 @@ void Shuriken::dropObstacles()
     mover.y += randomY;
 }
 
-SDL_Rect Shuriken::getMov()
+SDL_Rect Shuriken::getMov() //movement checker
 {
     return mover;
 }

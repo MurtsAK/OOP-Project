@@ -1,7 +1,7 @@
 #include "Spaceship.hpp"
 
 Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spaceship) : gRenderer(rend), assets(ast)
-{
+{ //defining coordinates for each spaceship from the assets file
     mover = mov;
     spaceship_type = spaceship;
     // src = {10, 144, 86, 80};
@@ -37,7 +37,7 @@ Spaceship::Spaceship(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int spa
     }
 }
 
-void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
+void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets) //drwaing the spacehship
 {
     if (!bullets.empty()){
         restTime+=1;
@@ -58,13 +58,13 @@ void Spaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     }
 }
 
-void Spaceship::operator ++ (){
+void Spaceship::operator ++ (){ //operator overloading for horizontal movement
     if(mover.x>1){
         mover.x -= 50;
     }
 }
 
-void Spaceship::operator ++ (int y){
+void Spaceship::operator ++ (int y){ //operator overloading for horizontal movement
     if(mover.x<1100){
         mover.x += 50;
     }
@@ -72,7 +72,7 @@ void Spaceship::operator ++ (int y){
 
 void Spaceship::blastAnimation() {}
 
-void Spaceship::createBullets()
+void Spaceship::createBullets() //creating bullets for the spaceship when spacebar is pressed
 {
     if (bullets.empty()){
         bullets.push_back(new Bullets(gRenderer, assets, mover, spaceship_type));
@@ -86,7 +86,7 @@ void Spaceship::createBullets()
 
 void Spaceship::Fire() {}
 
-SDL_Rect Spaceship::getMov()
+SDL_Rect Spaceship::getMov() //movement checker
 {
     return mover;
 }
@@ -95,7 +95,7 @@ bool Spaceship::getCollision() {}
 
 void Spaceship::setCollision() {}
 
-Spaceship::~Spaceship()
+Spaceship::~Spaceship() //destructor destroying the spaceship when game ended
 {
     for (auto B : bullets){
         delete B;
@@ -103,7 +103,7 @@ Spaceship::~Spaceship()
     bullets.clear();
 }
 
-list<Bullets*> Spaceship::getBullets()
+list<Bullets*> Spaceship::getBullets() //list of bullets fired
 {
     return bullets;
 }

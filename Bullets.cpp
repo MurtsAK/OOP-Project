@@ -4,21 +4,21 @@ void Bullets::draw(SDL_Renderer *rend, SDL_Texture *ast){
         SDL_RenderCopy(gRenderer, assets, &srcB, &moverB);
 }
 
-void Bullets::operator ++(){
+void Bullets::operator ++(){ //operator overloading function for movement of bullet
     moverB.y-=20;
 }
 
-SDL_Rect Bullets::getLocation()
+SDL_Rect Bullets::getLocation() //bullet location
 {
     return moverB;
 }
 
-void Bullets::removeBullet()
+void Bullets::removeBullet() //making the bullet null
 {
     moverB.h=0;moverB.w=0;
 }
 
-bool Bullets::outOfScreen(){
+bool Bullets::outOfScreen(){ //checking if the bullet is out of screen
     if ((moverB.y+moverB.h)<0){
         return true;
     }else{
@@ -27,7 +27,7 @@ bool Bullets::outOfScreen(){
 }
 
 Bullets::Bullets(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov, int bullet_type):gRenderer(rend), assets(ast)
-{
+{ //defining the speed of each bullet(moverB) and generating it accordng to its coordinates(srcB)
     if (bullet_type == 1){
         moverB = {mov.x+30,mov.y-25,40,40};
         srcB = {361,1805,66,66}; 

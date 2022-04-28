@@ -3,12 +3,12 @@
 
 Score::Score(int initialScore) : S(initialScore) {}
 
-void Score::ScoreUpdate()
+void Score::ScoreUpdate() //score update on collision
 {
     S += 10;
 }
 
-int Score::getScore()
+int Score::getScore() //getting the score
 {
     return S;
 }

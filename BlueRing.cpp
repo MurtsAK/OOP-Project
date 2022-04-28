@@ -14,12 +14,12 @@ void BlueRing::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     Enemy::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect BlueRing::getSrc()
+SDL_Rect BlueRing::getSrc() //returns the coordinates
 {
     return src;
 }
 
-void BlueRing::dropEnemies()
+void BlueRing::dropEnemies() //dropping object at a random speed
 {
     srand(time(0));
     int randomY;
@@ -27,22 +27,23 @@ void BlueRing::dropEnemies()
     mover.y += randomY;
 }
 
-int BlueRing::LifeDeduct()
+int BlueRing::LifeDeduct() //deduction of life if collided
 {
     return -1;
 }
 
-SDL_Rect BlueRing::getMov()
+SDL_Rect BlueRing::getMov() //getting dimension
 {
     return mover;
 }
 
-void BlueRing::animateEnemy()
+void BlueRing::animateEnemy() //animation when bullet is hit
+{
 {
     src = {1439, 438, 107, 121};
 }
 
-bool BlueRing::outOfScreen()
+bool BlueRing::outOfScreen() //function to check if our object has movedd out of screen or not
 {
     if (mover.y>700)
     {

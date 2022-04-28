@@ -217,7 +217,7 @@ void SpaceX::displayHealth()
     if (totalHealth.getGems() >= 0) // if game not over essentially
     {
         SDL_Rect srcGem = {1272, 850, 164, 156};
-        SDL_Rect moverGem = {30, 350, 30, 30};
+        SDL_Rect moverGem = {1100, 150, 50, 50};
         for (int i = 0; i < totalHealth.getGems(); i++)
         {
             if (i % 3 == 0)

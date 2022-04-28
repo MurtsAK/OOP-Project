@@ -15,12 +15,12 @@ void EnemySpaceship::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     Enemy::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect EnemySpaceship::getSrc()
+SDL_Rect EnemySpaceship::getSrc() //getting cooradinates
 {
     return src;
 }
 
-bool EnemySpaceship::outOfScreen()
+bool EnemySpaceship::outOfScreen() //checkin gif it has moved out of screen
 {
     if (mover.y>700)
     {
@@ -29,7 +29,7 @@ bool EnemySpaceship::outOfScreen()
     return false;
 }
 
-void EnemySpaceship::dropEnemies()
+void EnemySpaceship::dropEnemies() //dropping it at random speed
 {
     srand(time(0));
     int randomY;
@@ -37,7 +37,7 @@ void EnemySpaceship::dropEnemies()
     mover.y += randomY;
 }
 
-int EnemySpaceship::LifeDeduct()
+int EnemySpaceship::LifeDeduct() //life deduction when collided
 {
     return -1;
 }
@@ -47,7 +47,7 @@ SDL_Rect EnemySpaceship::getMov()
     return mover;
 }
 
-void EnemySpaceship::animateEnemy()
+void EnemySpaceship::animateEnemy() //animation on collision
 {
     static int currentState = 0;
     if (currentState == 0)

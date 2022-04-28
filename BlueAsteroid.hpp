@@ -2,9 +2,6 @@
 
 class BlueAsteroid : public Obstacle
 {
-    SDL_Rect src, mover;
-    bool isClicked = false;
-
 public:
     BlueAsteroid(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov);
     void draw(SDL_Renderer *, SDL_Texture *assets);

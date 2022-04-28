@@ -2,7 +2,7 @@
 // yellow enemy
 YellowEnemy::YellowEnemy(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
-    // Tank Body's location in asset.png
+    // Object's location in asset.png
     mover = mov;
     // src = {826, 225, 142, 160};
     // src = {144, 10, 124, 102};
@@ -11,16 +11,16 @@ YellowEnemy::YellowEnemy(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : O
 
 void YellowEnemy::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
 {
-    // Body is drawn and moves horizontal direction at the speed of 4 units
+    // Body is drawn 
     Obstacle::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect YellowEnemy::getSrc()
+SDL_Rect YellowEnemy::getSrc() //getting coordinates
 {
     return src;
 }
 
-bool YellowEnemy::outOfScreen()
+bool YellowEnemy::outOfScreen() //checking if still in screen
 {
     if (mover.y>700)
     {
@@ -29,7 +29,7 @@ bool YellowEnemy::outOfScreen()
     return false;
 }
 
-void YellowEnemy::cutAnimation()
+void YellowEnemy::cutAnimation() //animation when collision occurs
 {
     // src = {1001, 256, 142, 129};
     // src = {144, 10, 124, 102};
@@ -37,7 +37,7 @@ void YellowEnemy::cutAnimation()
     src = {1439, 438, 107, 121};
 }
 
-void YellowEnemy::dropObstacles()
+void YellowEnemy::dropObstacles() //dropping at a random speed
 {
     srand(time(0));
     int randomY;
@@ -46,7 +46,7 @@ void YellowEnemy::dropObstacles()
     mover.y +=randomY;
 }
 
-SDL_Rect YellowEnemy::getMov()
+SDL_Rect YellowEnemy::getMov() //movement check
 {
     return mover;
 }

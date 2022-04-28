@@ -2,23 +2,23 @@
 // red astroid
 RedAsteroid::RedAsteroid(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Obstacle(rend, ast)
 {
-    // Tank Body's location in asset.png
+    // Object's location in asset.png
     mover = mov;
     src = {552, 1120, 114, 114};
 }
 
-void RedAsteroid::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
+void RedAsteroid::draw(SDL_Renderer *gRenderer, SDL_Texture *assets) 
 {
-    // Body is drawn and moves horizontal direction at the speed of 4 units
+    // Body is drawn 
     Obstacle::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect RedAsteroid::getSrc()
+SDL_Rect RedAsteroid::getSrc() //getting coordinates 
 {
     return src;
 }
 
-bool RedAsteroid::outOfScreen()
+bool RedAsteroid::outOfScreen() //checking if it is still in screen
 {
     if (mover.y>700)
     {
@@ -27,13 +27,13 @@ bool RedAsteroid::outOfScreen()
     return false;
 }
 
-void RedAsteroid::cutAnimation()
+void RedAsteroid::cutAnimation() //animation when collision takes places
 {
     // src = {1185, 613, 135, 99};
     src = {1439, 438, 107, 121};
 }
 
-void RedAsteroid::dropObstacles()
+void RedAsteroid::dropObstacles() //dropping it at a random speed
 {
     srand(time(0));
     int randomY;
@@ -41,7 +41,7 @@ void RedAsteroid::dropObstacles()
     mover.y += randomY;
 }
 
-SDL_Rect RedAsteroid::getMov()
+SDL_Rect RedAsteroid::getMov() //movemment checker
 {
     return mover;
 }

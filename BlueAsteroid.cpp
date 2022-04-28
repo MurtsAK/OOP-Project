@@ -14,18 +14,18 @@ void BlueAsteroid::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     Obstacle::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect BlueAsteroid::getSrc(){
+SDL_Rect BlueAsteroid::getSrc(){ //returns the coordinates
     return src;
 }
 
-void BlueAsteroid::cutAnimation()
+void BlueAsteroid::cutAnimation() //animation when bullet is hit
 {
     // src = {998, 44, 139, 146};
     // src={116,144,50,50};
     src = {1439, 438, 107, 121};
 }
 
-bool BlueAsteroid::outOfScreen()
+bool BlueAsteroid::outOfScreen() //function to check if our object has movedd out of screen or not
 {
     if (mover.y>700)
     {
@@ -33,7 +33,7 @@ bool BlueAsteroid::outOfScreen()
     }
     return false;
 }
-void BlueAsteroid::dropObstacles()
+void BlueAsteroid::dropObstacles() //dropping object at a random speed
 {
     srand(time(0));
     int randomY;
@@ -41,7 +41,7 @@ void BlueAsteroid::dropObstacles()
     mover.y += randomY;
 }
 
-SDL_Rect BlueAsteroid::getMov()
+SDL_Rect BlueAsteroid::getMov() //getting dimension
 {
     return mover;
 }

@@ -5,8 +5,11 @@
 
 class Obstacle
 {
+    protected:
+    SDL_Rect src, mover;
     SDL_Renderer *gRenderer;
     SDL_Texture *assets;
+    bool isClicked = false;
 
 public:
     Obstacle(SDL_Renderer *, SDL_Texture *);

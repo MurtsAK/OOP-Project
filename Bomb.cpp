@@ -15,11 +15,11 @@ void Bomb::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     Enemy::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect Bomb::getSrc(){
+SDL_Rect Bomb::getSrc(){ //returns the coordinates
     return src;
 }
 
-bool Bomb::outOfScreen()
+bool Bomb::outOfScreen() //function to check if our object has movedd out of screen or not
 {
     if (mover.y>700)
     {
@@ -28,7 +28,7 @@ bool Bomb::outOfScreen()
     return false;
 }
 
-void Bomb::dropEnemies()
+void Bomb::dropEnemies() //dropping object at a random speed
 {
     //srand(time(0));
     int randomY;
@@ -36,7 +36,7 @@ void Bomb::dropEnemies()
     mover.y += randomY;
 }
 
-int Bomb::LifeDeduct()
+int Bomb::LifeDeduct() //deduction of life if collided
 {
     return -3;
 }
@@ -46,7 +46,7 @@ SDL_Rect Bomb::getMov()
     return mover;
 }
 
-void Bomb::animateEnemy()
+void Bomb::animateEnemy() //animation when bullet is hit
 {
     static int currentState = 0;
     if (currentState == 0)

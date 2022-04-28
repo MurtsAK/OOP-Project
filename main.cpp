@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) //main function where the game is started, run and closed
 {
     Game game;
     // Test t1;

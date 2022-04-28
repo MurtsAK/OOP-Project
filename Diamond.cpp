@@ -2,7 +2,7 @@
 
 Diamond::Diamond(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Collectible(rend, ast)
 {
-    // Tank Body's location in asset.png
+    // Diamond's location in asset.png
     mover = mov;
     // src = {1262, 840, 164, 156};
     // src={310,249,29,27};
@@ -16,12 +16,12 @@ void Diamond::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     Collectible::draw(gRenderer,assets,src,mover);
 }
 
-SDL_Rect Diamond::getSrc()
+SDL_Rect Diamond::getSrc() //getting coordinates
 {
     return src;
 }
 
-bool Diamond::outOfScreen()
+bool Diamond::outOfScreen() //checking if diamond has moved out of screen
 {
     if (mover.y>700)
     {
@@ -30,7 +30,7 @@ bool Diamond::outOfScreen()
     return false;
 }
 
-void Diamond::dropCollectibles()
+void Diamond::dropCollectibles() //dropping it at a random speed
 {
     // Collectible::dropCollectibles();
     srand(time(0));
@@ -39,17 +39,17 @@ void Diamond::dropCollectibles()
     mover.y += randomY;
 }
 
-int Diamond::healthIncrease()
+int Diamond::healthIncrease() 
 {
     return 1;
 }
 
-SDL_Rect Diamond::getMov()
+SDL_Rect Diamond::getMov() //getting its movement
 {
     return mover;
 }
 
-void Diamond::removeCollectible()
+void Diamond::removeCollectible() //removing when collected
 {
     src = {0, 0, 0, 0};
 }

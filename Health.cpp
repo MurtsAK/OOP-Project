@@ -2,7 +2,7 @@
 
 Health::Health(SDL_Renderer *rend, SDL_Texture *ast, SDL_Rect mov) : Collectible(rend, ast)
 {
-    // Tank Body's location in asset.png
+    // Health's location in asset.png
     mover = mov;
     // src = {1039, 813, 183, 183};
     src = {1049, 823, 183, 183};
@@ -15,7 +15,7 @@ void Health::draw(SDL_Renderer *gRenderer, SDL_Texture *assets)
     SDL_RenderCopy(gRenderer, assets, &src, &mover);
 }
 
-bool Health::outOfScreen()
+bool Health::outOfScreen() //checking if health(heart) is still in screen
 {
     if (mover.y>700)
     {
@@ -24,7 +24,7 @@ bool Health::outOfScreen()
     return false;
 }
 
-void Health::dropCollectibles()
+void Health::dropCollectibles() //dropping at a random screen
 {
     // Collectible::dropCollectibles();
     srand(time(0));
@@ -33,7 +33,7 @@ void Health::dropCollectibles()
     mover.y += randomY;
 }
 
-Health::healthIncrease()
+Health::healthIncrease() //total increase in health
 {
     return 2;
 }
@@ -43,7 +43,7 @@ SDL_Rect Health::getMov()
     return mover;
 }
 
-void Health::removeCollectible()
+void Health::removeCollectible() //removing when the user collects the health
 {
     src = {0, 0, 0, 0};
 }
